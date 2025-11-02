@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportar Incidencia - Rincón TIC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos personalizados para el contenido */
+        .step-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px; /* rounded-full */
+            margin-right: 1rem; /* mr-4 */
+            color: white; /* text-white */
+            font-weight: 700; /* font-bold */
+            background-color: var(--columela-blue);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'columela-dark': 'var(--columela-dark)',
+                        'columela-light': 'var(--columela-light)',
+                        'columela-yellow': 'var(--columela-yellow)',
+                        'columela-blue': 'var(--columela-blue)',
+                        'columela-text': 'var(--columela-text)',
+                    },
+                },
+            },
+        };
+
+        // Función para cargar dinámicamente el header y footer
+        async function includeHTML(componentId, filePath) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: No se pudo cargar el componente ${filePath}.`);
+                }
+                const html = await response.text();
+                document.getElementById(componentId).innerHTML = html;
+            } catch (error) {
+                console.error('Error al incluir HTML:', error);
+                document.getElementById(componentId).innerHTML = `<div class="p-4 bg-red-100 text-red-700 text-center">${error.message}</div>`;
+            }
+        }
+
+        window.onload = function() {
+            includeHTML('header-container', 'header.html');
+            includeHTML('footer-container', 'footer.html');
+        };
+    </script>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
+
+    <main class="container mx-auto p-4 sm:p-8 max-w-7xl">
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-columela-dark mb-8 text-center border-b-2 border-columela-yellow pb-2">
+            Protocolo: Reporte y Gestión de Incidencias TIC
+        </h1>
+
+        <!-- Introducción -->
+        <section class="mb-12 text-columela-text">
+            <p class="mb-4 text-lg">
+                Antes de registrar un fallo en la intranet, es fundamental seguir este protocolo para ahorrar tiempo al equipo TIC y asegurar que el problema no sea un error de conexión simple o que ya esté siendo gestionado por otro compañero.
+            </p>
+            <p class="font-semibold text-lg text-columela-blue">
+                ¡Tu colaboración es esencial para mantener los recursos operativos!
+            </p>
+        </section>
+
+        <!-- Sección 1: Verificaciones Previas (Tarjetas) -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-columela-dark mb-6">1. Verificaciones rápidas (el 80% de las soluciones)</h2>
+            <div class="space-y-4">
+
+                <div class="flex items-start p-5 bg-white rounded-xl shadow-md border-l-4 border-columela-yellow">
+                    <div class="step-icon bg-columela-yellow">1</div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Alimentación y conexión</h3>
+                        <p class="text-columela-text">Comprueba que el equipo (proyector, PC, ratón, etc.) esté enchufado, encendido y que el cable de vídeo (HDMI/VGA) esté firmemente conectado tanto al PC como al proyector/pantalla.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start p-5 bg-white rounded-xl shadow-md border-l-4 border-columela-blue">
+                    <div class="step-icon">2</div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Estado del proyector/pizarra</h3>
+                        <p class="text-columela-text">Si es un proyector, verifica que la bombilla no esté parpadeando o que el dispositivo no esté en modo "Sleep" (a veces solo necesita un toque en el mando o en el botón de encendido).</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start p-5 bg-white rounded-xl shadow-md border-l-4 border-columela-yellow">
+                    <div class="step-icon bg-columela-yellow">3</div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Reinicio rápido</h3>
+                        <p class="text-columela-text">Si el problema es de software (no funciona internet, lentitud), prueba a reiniciar el ordenador. Esto resuelve una gran cantidad de fallos temporales.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start p-5 bg-white rounded-xl shadow-md border-l-4 border-columela-blue">
+                    <div class="step-icon">4</div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Comprobación de Internet/Red</h3>
+                        <p class="text-columela-text">Si el fallo es de red, comprueba que el cable de red esté conectado y que la luz indicadora del puerto esté activa (verde/naranja).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Comprobar Incidencias Abiertas -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-columela-dark mb-6 border-b pb-2">2. Consultar incidencias abiertas</h2>
+            <div class="p-6 bg-columela-light rounded-xl shadow-inner border-l-4 border-columela-dark space-y-3 text-columela-text">
+                <p>Para evitar duplicar el trabajo y las incidencias, verifica si el fallo que has detectado ya ha sido reportado por otra/o compañera/o:</p>
+                <ol class="list-decimal list-inside space-y-2 ml-4">
+                    <li>Accede a la <a href="http://intranet.iescolumela.es/" target="_blank" >Intranet</a> del Centro.</li>
+                    <li>Navega a: <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-sm">Centro -> Centro TDE -> Incidencias TDE</span>.</li>
+                    <li>Revisa las incidencias que tienen el estado de "En curso" y "Abierta" (son las que salen al inicio) o filtra por el aula donde ocurre la incidencia.</li>
+                    <li>Si la incidencia ya está registrada y aún no se ha resuelto, solo hay que esperar a que se solucione.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Sección 3: Pasos para el Registro de Nueva Incidencia -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-columela-dark mb-6 border-b pb-2">3. Registrar una nueva incidencia</h2>
+            <ol class="space-y-4 text-columela-text">
+                <li class="flex items-start">
+                    <span class="step-icon">A</span>
+                    <div>
+                        <p class="font-semibold text-lg text-columela-dark">Localización</p>
+                        <p>En la Intranet, navega a: <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-sm">Centro -> Centro TDE -> Nueva incidencia</span>.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="step-icon">B</span>
+                    <div>
+                        <p class="font-semibold text-lg text-columela-dark">Datos Clave</p>
+                        <p>Rellena obligatoriamente los campos de **Aula** (donde ocurre el fallo) y el **Tipo de Problema** (Hardware, Software, Red, etc.).</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="step-icon">C</span>
+                    <div>
+                        <p class="font-semibold text-lg text-columela-dark">Descripción Detallada (¡Esencial!)</p>
+                        <p>Sé lo más específico posible. Incluye:</p>
+                        <ul class="list-disc list-inside ml-6 mt-1">
+                            <li>El número de inventario del equipo si lo tiene.</li>
+                            <li>Qué estabas haciendo cuando ocurrió el fallo.</li>
+                            <li>El mensaje de error exacto que aparece en pantalla.</li>
+                            <li>Qué pasos de la Sección 1 ya has intentado (ej: "Ya he reiniciado el PC y comprobado los cables HDMI").</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="step-icon">D</span>
+                    <div>
+                        <p class="font-semibold text-lg text-columela-dark">Finalizar</p>
+                        <p>Pulsa el botón **"Registrar Incidencia"** para enviarla al equipo técnico.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+    </main>
+
+    <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
+    <div id="footer-container"></div>
+
+</body>
+</html>
