@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Rincón TIC del Profesorado IES Columela</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración personalizada de Tailwind con colores corporativos (Columela) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'columela-yellow': '#FBBA0E', 
+                        'columela-dark': '#111827',
+                        'columela-light': '#F9FAFB',
+                        'columela-blue': '#38A5DD',
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Carga de estilos personalizados (para variables CSS y efectos) -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Carga de Phosphor Icons (para iconos de acciones rápidas) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- 1. Contenedor para la Cabecera (Se inyecta header.html aquí) -->
+    <div id="header-container">
+        <p class="text-center text-gray-500 py-4">Cargando cabecera...</p>
+    </div>
+
+    <!-- 2. Contenido Principal -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- SECCIÓN 1: INTRODUCCIÓN Y BIENVENIDA (Sin marco) -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-columela-dark mb-4">Bienvenido al Rincón TIC</h2>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Este espacio ha sido diseñado como tu punto de referencia centralizado para todo el soporte y recursos de Tecnologías de la Información y la Comunicación (TIC) en el IES Columela. Aquí encontrarás guías, procedimientos, normativa y herramientas esenciales para facilitar la integración digital en tu práctica docente.
+            </p>
+            <p class="text-md text-gray-600 mt-3">
+                Utiliza el menú de navegación superior para explorar las secciones de contenido o los accesos rápidos a continuación para las acciones más frecuentes.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 2: ACCESOS RÁPIDOS (Quick Actions) -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-columela-dark mb-6 border-b pb-2">Acciones Rápidas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Botón: Reservar Material -->
+                <a href="#" class="quick-action-button flex items-center justify-between p-6 bg-white border-4 border-columela-blue rounded-xl shadow-lg transition duration-300 hover:border-columela-yellow hover:shadow-xl">
+                    <div class="flex items-center">
+                        <i class="ph ph-calendar-plus text-4xl text-columela-blue mr-4"></i>
+                        <div>
+                            <p class="text-xl font-bold text-columela-dark">RESERVAR MATERIAL</p>
+                            <p class="text-sm text-gray-600 mt-1">Acceso al sistema de reservas de carritos de tablets, Chromebooks y otros equipos.</p>
+                        </div>
+                    </div>
+                    <i class="ph ph-arrow-right text-3xl text-columela-blue"></i>
+                </a>
+                
+                <!-- Botón: Reportar Incidencia -->
+                <a href="#" class="quick-action-button flex items-center justify-between p-6 bg-white border-4 border-columela-blue rounded-xl shadow-lg transition duration-300 hover:border-columela-yellow hover:shadow-xl">
+                    <div class="flex items-center">
+                        <i class="ph ph-warning-octagon text-4xl text-red-500 mr-4"></i>
+                        <div>
+                            <p class="text-xl font-bold text-columela-dark">REPORTAR INCIDENCIA</p>
+                            <p class="text-sm text-gray-600 mt-1">Notifica fallos de hardware, problemas de red o software de forma rápida.</p>
+                        </div>
+                    </div>
+                    <i class="ph ph-arrow-right text-3xl text-columela-blue"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: ÍNDICE DE CONTENIDOS -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-columela-dark mb-6 border-b pb-2">Explora la Guía Completa</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Tarjeta 1: Gestión de recursos -->
+                <a href="tutoriales/gestion-recursos.html" class="block bg-white p-5 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 hover:border-columela-yellow">
+                    <i class="ph ph-folder-open text-3xl text-columela-blue mb-2"></i>
+                    <h3 class="text-xl font-bold text-columela-dark mb-2">Gestión de recursos</h3>
+                    <p class="text-sm text-gray-600">Procedimientos para solicitar, utilizar y mantener el equipamiento tecnológico del centro.</p>
+                </a>
+                
+                <!-- Tarjeta 2: Hardware -->
+                <a href="tutoriales/hardware.html" class="block bg-white p-5 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 hover:border-columela-yellow">
+                    <i class="ph ph-cpu text-3xl text-columela-blue mb-2"></i>
+                    <h3 class="text-xl font-bold text-columela-dark mb-2">Hardware</h3>
+                    <p class="text-sm text-gray-600">Guías prácticas de uso para Pizarras Digitales, proyectores, tabletas, y soluciones WiFi.</p>
+                </a>
+
+                <!-- Tarjeta 3: Normativa y Buenas Prácticas -->
+                <a href="tutoriales/normativa.html" class="block bg-white p-5 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 hover:border-columela-yellow">
+                    <i class="ph ph-scroll text-3xl text-columela-blue mb-2"></i>
+                    <h3 class="text-xl font-bold text-columela-dark mb-2">Normativa y Buenas Prácticas</h3>
+                    <p class="text-sm text-gray-600">Accede a documentos clave: Plan Digital de Centro, LOPD y protocolos de seguridad online.</p>
+                </a>
+
+                <!-- Tarjeta 4: Guías de Plataformas -->
+                <a href="tutoriales/plataformas.html" class="block bg-white p-5 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 hover:border-columela-yellow">
+                    <i class="ph ph-browser text-3xl text-columela-blue mb-2"></i>
+                    <h3 class="text-xl font-bold text-columela-dark mb-2">Guías de Plataformas</h3>
+                    <p class="text-sm text-gray-600">Tutoriales paso a paso para Moodle, G Suite (Classroom, Drive) y sistemas de la Junta.</p>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 3. Contenedor para el Pie de Página (Se inyecta footer.html aquí) -->
+    <div id="footer-container">
+        <p class="text-center text-gray-500 py-4">Cargando pie de página...</p>
+    </div>
+
+    <!-- Script de Inclusión Dinámica (Debe ir al final del <body>) -->
+    <script>
+        /**
+         * Función para incluir dinámicamente archivos HTML externos.
+         * @param {string} file - Ruta del archivo HTML a incluir (e.g., 'header.html').
+         * @param {string} targetId - ID del elemento donde se inyectará el contenido.
+         */
+        async function includeHTML(file, targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (!targetElement) {
+                console.error(`Error: Elemento objetivo con ID '${targetId}' no encontrado.`);
+                return;
+            }
+
+            try {
+                // Intenta cargar el archivo de forma asíncrona
+                const response = await fetch(file);
+
+                if (!response.ok) {
+                    // Si la respuesta HTTP no es exitosa (e.g., 404 Not Found), lanza un error
+                    throw new Error(`Error al cargar ${file}. Estado: ${response.status}`);
+                }
+
+                // Obtiene el texto del archivo e inyéctalo en el elemento objetivo
+                const htmlText = await response.text();
+                targetElement.innerHTML = htmlText;
+
+            } catch (error) {
+                // Captura errores de red (CORS en local) o los errores lanzados arriba
+                console.error(`Fallo en la inclusión dinámica de ${file}:`, error);
+                targetElement.innerHTML = `<p class="text-center text-red-500 p-4">Error: No se pudo cargar el componente ${file}.</p>`;
+            }
+        }
+
+        // Ejecutar las inclusiones al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            includeHTML('header.html', 'header-container');
+            includeHTML('footer.html', 'footer-container');
+        });
+    </script>
+</body>
+</html>

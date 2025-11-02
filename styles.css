@@ -1,0 +1,54 @@
+:root {
+    --columela-yellow: #FBBA0E;
+    --columela-dark: #111827;
+    --columela-light: #F9FAFB;
+    --columela-blue: #38A5DD;
+    --columela-text: #374151; /* Gris oscuro para texto de mejor legibilidad */
+}
+
+/* ----------------------------------- */
+/* ESTILOS DE NAVEGACIÓN (HEADER LINKS) */
+/* ----------------------------------- */
+
+.nav-link-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem; /* Margen interno para los enlaces */
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.875rem; /* Tamaño de fuente */
+    color: var(--columela-text);
+    border-bottom: 3px solid transparent; /* Borde inferior transparente por defecto */
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-link-item:hover,
+.nav-link-item.active {
+    color: var(--columela-blue); /* Texto azul al pasar el ratón o si está activo */
+    border-bottom-color: var(--columela-blue); /* Borde inferior azul al pasar el ratón */
+    background-color: transparent; /* Fondo transparente o blanco */
+}
+
+/* Estilo para los elementos del submenú (dentro del desplegable) */
+.group li a {
+    /* Los enlaces del submenú deben ser menos prominentes */
+    font-weight: 400;
+    text-transform: none;
+    padding: 0.5rem 1rem;
+    border-bottom: none;
+}
+
+.group li a:hover {
+    background-color: var(--columela-yellow) !important;
+    color: var(--columela-dark) !important;
+}
+
+
+/* ----------------------------------- */
+/* ESTILOS DE CONTENIDO (MAIN)         */
+/* ----------------------------------- */
+
+/* Estilos de botones de acción rápida */
+.quick-action-button {
+    text-decoration: none;
+}
