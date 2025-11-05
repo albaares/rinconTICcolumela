@@ -26,11 +26,11 @@
             theme: {
                 extend: {
                     colors: {
-                        'columela-dark': 'var(--columela-dark)',
-                        'columela-light': 'var(--columela-light)',
-                        'columela-yellow': 'var(--columela-yellow)',
-                        'columela-blue': 'var(--columela-blue)',
-                        'columela-text': 'var(--columela-text)',
+                        'columela-dark': '#0f172a', /* slate-900 */
+                        'columela-light': '#f1f5f9', /* slate-100 */
+                        'columela-yellow': '#facc15', /* amber-400 */
+                        'columela-blue': '#3b82f6', /* blue-500 */
+                        'columela-text': '#334155', /* slate-600 */
                     },
                 },
             },
@@ -65,13 +65,13 @@
     <main class="container mx-auto p-4 sm:p-8 max-w-7xl">
 
         <h1 class="text-3xl sm:text-4xl font-extrabold text-columela-dark mb-8 text-center border-b-2 border-columela-yellow pb-2">
-            Protocolo: Reporte y Gestión de Incidencias TIC
+            Protocolo: Reporte y gestión de incidencias TIC
         </h1>
 
         <!-- Introducción -->
         <section class="mb-12 text-columela-text">
             <p class="mb-4 text-lg">
-                Antes de registrar un fallo en la intranet, es fundamental seguir este protocolo para ahorrar tiempo al equipo TIC y asegurar que el problema no sea un error de conexión simple o que ya esté siendo gestionado por otro compañero.
+                Antes de registrar un fallo en la intranet, es fundamental seguir este protocolo para ahorrar tiempo y dinero y asegurar que el problema no sea un error de conexión simple o que ya esté siendo gestionado por otro compañero.
             </p>
             <p class="font-semibold text-lg text-columela-blue">
                 ¡Tu colaboración es esencial para mantener los recursos operativos!
@@ -86,16 +86,46 @@
                 <div class="flex items-start p-5 bg-white rounded-xl shadow-md border-l-4 border-columela-yellow">
                     <div class="step-icon bg-columela-yellow">1</div>
                     <div>
-                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Alimentación y conexión</h3>
-                        <p class="text-columela-text">Comprueba que el equipo (proyector, PC, ratón, etc.) esté enchufado, encendido y que el cable de vídeo (HDMI/VGA) esté firmemente conectado tanto al PC como al proyector/pantalla.</p>
+                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Alimentación, batería y conexión</h3>
+                        <p class="text-columela-text mb-2">Comprueba que el equipo (proyector, PC, ratón, etc.) esté enchufado, encendido y que el cable de vídeo (HDMI/VGA) esté firmemente conectado tanto al PC como al proyector/pantalla.</p>
+                        
+                        <!-- INSTRUCCIONES DE CARGA PARA PORTÁTILES -->
+                        <div class="p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <p class="font-semibold text-columela-dark">Si es un portátil (Carrito TIC):</p>
+                            <ul class="list-disc list-inside ml-4 text-columela-text mt-1">
+                                <li>Comprueba que tenga batería.</li>
+                                <li>Para darle una carga rápida, conéctalo al carrito y pulsa el botón redondo del lateral.</li>
+                                <li>Cuando este botón se muestre en verde significa que se está cargando.</li>
+                                <li>Espera al menos 15 minutos a que cargue, e intenta encenderlo. Si lo has cargado menos de 15 minutos, puedes intentar encenderlo sin desenchufarlo solo si el cable es lo suficientemente largo.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div class="flex items-start p-5 bg-white rounded-xl shadow-md border-l-4 border-columela-blue">
                     <div class="step-icon">2</div>
                     <div>
-                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Estado del proyector/pizarra</h3>
-                        <p class="text-columela-text">Si es un proyector, verifica que la bombilla no esté parpadeando o que el dispositivo no esté en modo "Sleep" (a veces solo necesita un toque en el mando o en el botón de encendido).</p>
+                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Periféricos, alimentación y visualización</h3>
+                        
+                        <p class="text-columela-text mb-2">
+                            Verificación de corriente: Para cualquier periférico (impresora, altavoz, proyector, pantalla), comprueba que esté encendido y que le llegue corriente (busca alguna luz LED indicadora). Es muy habitual que estos equipos estén simplemente desenchufados o apagados.
+                        </p>
+
+                        <p class="text-columela-text mb-2">
+                            Proyectores y pantallas:
+                            <ul class="list-disc list-inside ml-4 text-columela-text mt-1 space-y-1">
+                                <li>Verifica que el proyector no esté en modo "Sleep" (un toque al botón de encendido suele bastar).</li>
+                                <li>Si el mando no funciona (pilas agotadas), pulsa el botón de encendido directamente en el proyector.</li>
+                                <li>Comprueba que la entrada seleccionada en el proyector/pantalla (Input Source) coincide con tu cable (VGA o HDMI).</li>
+                                <li>Asegúrate de que el ordenador está duplicando o extendiendo la pantalla. En Windows, usa <code class="font-mono bg-gray-100 px-1 rounded text-columela-text">Win + P</code>. En Educandos, la combinación puede variar (ej: <code class="font-mono bg-gray-100 px-1 rounded text-columela-text">Fn + F7</code>).</li>
+                            </ul>
+                        </p>
+
+                        <!-- Referencia a la página de tutoriales -->
+                        <p class="text-columela-text mt-3 p-2 bg-blue-50 rounded-lg border border-blue-200">
+                            Si el problema de visualización persiste, consulta nuestra <a href="#" class="text-columela-blue font-semibold hover:underline">página de tutoriales sobre pantallas</a> (disponible próximamente) para guías específicas.
+                        </p>
+
                     </div>
                 </div>
 
@@ -110,8 +140,33 @@
                 <div class="flex items-start p-5 bg-white rounded-xl shadow-md border-l-4 border-columela-blue">
                     <div class="step-icon">4</div>
                     <div>
-                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Comprobación de Internet/Red</h3>
-                        <p class="text-columela-text">Si el fallo es de red, comprueba que el cable de red esté conectado y que la luz indicadora del puerto esté activa (verde/naranja).</p>
+                        <h3 class="font-semibold text-lg text-columela-dark mb-1">Comprobación de internet/red</h3>
+                        
+                        <ul class="list-disc list-inside ml-4 text-columela-text space-y-2">
+                            <li>
+                                Fallo de la red WiFi: Comprueba si el problema es generalizado (afecta a varios equipos a la vez, incluyendo móviles).
+                                <p class="mt-1 ml-4 text-columela-text">
+                                    Si es generalizado, es un fallo de infraestructura (propia o de la Junta). No registres una incidencia formal, ya que estará siendo gestionado por el equipo TIC o se resolverá por sí solo. Solo queda avisar y esperar.
+                                </p>
+                            </li>
+                            <li>
+                                Si el fallo es solo de un equipo:
+                                <ul class="list-disc list-inside ml-4 mt-1 space-y-1">
+                                    <li>Si usa cable de red: Comprueba que esté bien conectado y que la luz del puerto esté activa.</li>
+                                    <li>Si es por WiFi:
+                                        <ul class="list-disc list-inside ml-4 mt-1 space-y-1">
+                                            <li>Equipo del centro: Solo intenta el Reinicio rápido (Punto 3). No modifiques la configuración de red.</li>
+                                            <li>Equipo propio (o alumnado): Consulta las instrucciones oficiales de configuración WiFi de la Junta en este enlace: 
+                                                <a href="#enlace-junta-configuracion-wifi" class="text-columela-blue hover:underline font-medium">[ENLACE AL PDF DE LA JUNTA PARA CONFIGURACIÓN WIFI]</a>.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="mt-3 p-2 bg-yellow-50 rounded-lg border border-yellow-200 text-columela-text">
+                            Recuerda: Solo registra la incidencia si el problema es de un equipo concreto y ya has comprobado todos los puntos de la sección 1.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -123,8 +178,13 @@
             <div class="p-6 bg-columela-light rounded-xl shadow-inner border-l-4 border-columela-dark space-y-3 text-columela-text">
                 <p>Para evitar duplicar el trabajo y las incidencias, verifica si el fallo que has detectado ya ha sido reportado por otra/o compañera/o:</p>
                 <ol class="list-decimal list-inside space-y-2 ml-4">
-                    <li>Accede a la <a class="text-columela-blue" href="http://intranet.iescolumela.es/" target="_blank" >Intranet</a> del Centro.</li>
-                    <li>Navega a: <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-sm">Centro -> Centro TDE -> Incidencias TDE</span>.</li>
+                    <li>Accede a la <a href="http://intranet.iescolumela.es/" target="_blank" class="text-columela-blue hover:underline font-medium">Intranet</a> del centro.</li>
+                    <!-- RUTA CON ENLACE DESTACADO PARA INCIDENCIAS TDE -->
+                    <li>Navega a: 
+                        <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-columela-text">
+                            Centro -> Centro TDE -> <a href="https://intranet.iescolumela.es/TIC/index.php" target="_blank" class="text-columela-blue hover:underline font-bold">Incidencias TDE</a>
+                        </span>.
+                    </li>
                     <li>Revisa las incidencias que tienen el estado de "En curso" y "Abierta" (son las que salen al inicio) o filtra por el aula donde ocurre la incidencia.</li>
                     <li>Si la incidencia ya está registrada y aún no se ha resuelto, solo hay que esperar a que se solucione.</li>
                 </ol>
@@ -134,31 +194,50 @@
         <!-- Sección 3: Pasos para el Registro de Nueva Incidencia -->
         <section class="mb-12">
             <h2 class="text-2xl font-bold text-columela-dark mb-6 border-b pb-2">3. Registrar una nueva incidencia</h2>
+
+            <!-- ALERTA DE REQUISITOS -->
+            <div class="p-6 mb-8 bg-red-100 border-l-4 border-red-500 rounded-xl shadow-lg">
+                <p class="text-xl font-extrabold text-red-700 mb-2 flex items-center">
+                    <!-- Icono de alerta (inline SVG) -->
+                    <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.427 2.604-1.427 3.369 0l5.59 10.292c.764 1.427-.23 3.129-1.884 3.129H4.551c-1.654 0-2.648-1.702-1.884-3.129l5.59-10.292zM10 13a1 1 0 100 2 1 1 0 000-2zm0-6a1 1 0 00-1 1v3a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                    ATENCIÓN: Solo si ha completado los pasos 1 y 2
+                </p>
+                <p class="text-red-600">
+                    Es obligatorio realizar las Verificaciones rápidas (1) y Consultar incidencias abiertas (2) antes de continuar. El equipo técnico solo procesará incidencias que cumplan estos requisitos previos.
+                </p>
+            </div>
+            <!-- FIN ALERTA -->
+
             <ol class="space-y-4 text-columela-text">
                 <li class="flex items-start">
                     <span class="step-icon">A</span>
                     <div>
                         <p class="font-semibold text-lg text-columela-dark">Localización</p>
-                        <p>En la Intranet, navega a: <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-sm">Centro -> Centro TDE -> Nueva incidencia</span>.</p>
+                        <!-- RUTA CON ENLACE DESTACADO PARA NUEVA INCIDENCIA -->
+                        <p>En la intranet, navega a: 
+                            <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-columela-text">
+                                Centro -> Centro TDE -> <a href="https://intranet.iescolumela.es/TIC/incidencia.php" target="_blank" class="text-columela-blue hover:underline font-bold">Nueva incidencia</a>
+                            </span>.
+                        </p>
                     </div>
                 </li>
                 <li class="flex items-start">
                     <span class="step-icon">B</span>
                     <div>
-                        <p class="font-semibold text-lg text-columela-dark">Datos Clave</p>
-                        <p>Rellena obligatoriamente los campos de **Aula** (donde ocurre el fallo) y el **Tipo de Problema** (Hardware, Software, Red, etc.).</p>
+                        <p class="font-semibold text-lg text-columela-dark">Datos clave</p>
+                        <p>Rellena obligatoriamente los campos de Aula, el Tipo de problema (Hardware, Software, Red, etc.). y Asunto.</p>
                     </div>
                 </li>
                 <li class="flex items-start">
                     <span class="step-icon">C</span>
                     <div>
-                        <p class="font-semibold text-lg text-columela-dark">Descripción Detallada (¡Esencial!)</p>
-                        <p>Sé lo más específico posible. Incluye:</p>
+                        <p class="font-semibold text-lg text-columela-dark">Descripción de la incidencia</p>
+                        <p>Se debe aportar la siguiente información para un diagnóstico rápido y eficaz:</p>
                         <ul class="list-disc list-inside ml-6 mt-1">
-                            <li>El número de inventario del equipo si lo tiene.</li>
-                            <li>Qué estabas haciendo cuando ocurrió el fallo.</li>
-                            <li>El mensaje de error exacto que aparece en pantalla.</li>
-                            <li>Qué pasos de la Sección 1 ya has intentado (ej: "Ya he reiniciado el PC y comprobado los cables HDMI").</li>
+                            <li>Identificación clara del equipo afectado (ej: número de inventario, PC de alumnado de la fila 3 puesto 5, Proyector del aula 103, etc.).</li>
+                            <li>Descripción concisa del problema: ¿Qué no funciona? ¿Qué ha dejado de hacer? (Ej: El altavoz no enciende, el proyector no da imagen, no hay acceso a internet).</li>
+                            <li>Mensaje de error exacto que aparece en pantalla (si aplica).</li>
+                            <li>Qué pasos de la sección 1 ya se han intentado (ej: "Se ha reiniciado el PC y comprobado los cables HDMI").</li>
                         </ul>
                     </div>
                 </li>
@@ -166,7 +245,7 @@
                     <span class="step-icon">D</span>
                     <div>
                         <p class="font-semibold text-lg text-columela-dark">Finalizar</p>
-                        <p>Pulsa el botón **"Registrar Incidencia"** para enviarla al equipo técnico.</p>
+                        <p>Pulsa el botón "Registrar Incidencia" para enviarla al equipo técnico.</p>
                     </div>
                 </li>
             </ol>
