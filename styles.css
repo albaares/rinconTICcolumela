@@ -1,4 +1,5 @@
 :root {
+    /* Paleta de Colores de Columela */
     --columela-yellow: #FBBA0E;
     --columela-dark: #111827;
     --columela-light: #F9FAFB;
@@ -39,16 +40,71 @@
 }
 
 .group li a:hover {
-    background-color: var(--columela-yellow) !important;
-    color: var(--columela-dark) !important;
+    background-color: var(--columela-light);
+    color: var(--columela-blue);
 }
 
+/* ----------------------------------- */
+/* ESTILOS DE ACCIONES RÁPIDAS (INDEX) */
+/* ----------------------------------- */
+
+.quick-action-button:hover .ph {
+    transform: scale(1.1); /* Efecto en los iconos al pasar el ratón */
+    transition: transform 0.3s ease-in-out;
+}
 
 /* ----------------------------------- */
-/* ESTILOS DE CONTENIDO (MAIN)         */
+/* ICONOS DE PASOS (REPORTAR INCIDENCIA) */
 /* ----------------------------------- */
 
-/* Estilos de botones de acción rápida */
-.quick-action-button {
-    text-decoration: none;
+.step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    margin-right: 1rem;
+    color: white;
+    font-weight: 700;
+    background-color: var(--columela-blue);
+}
+
+/* ----------------------------------- */
+/* BOTONES DE PESTAÑAS (RESERVA MATERIAL) */
+/* ----------------------------------- */
+
+.tab-button {
+    /* Estilos base: fuente, color, padding */
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    color: var(--columela-text);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    
+    /* Efecto de transición y borde inferior */
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease-in-out;
+    
+    /* Estilo de la pestaña (opcional: redondez superior) */
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    
+    /* Separación interna del ícono y texto */
+    display: inline-flex;
+    align-items: center;
+}
+
+.tab-button:hover {
+    color: var(--columela-blue); /* Color al pasar el ratón */
+    background-color: var(--columela-light); /* Un ligero fondo gris al pasar el ratón */
+}
+
+.tab-button.active {
+    /* Pestaña ACTIVA/SELECCIONADA */
+    color: var(--columela-dark); /* Texto más oscuro */
+    background-color: white; /* Fondo blanco (que contraste con el gris de la página) */
+    border-bottom-color: var(--columela-blue); /* Borde inferior azul para marcarla */
+    margin-bottom: -1px; /* Tapa la línea divisoria del contenedor, simulando una pestaña */
 }

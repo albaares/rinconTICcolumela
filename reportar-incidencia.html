@@ -4,59 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportar Incidencia - Rincón TIC</title>
+    
+
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos -->
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <style>
-        /* Estilos personalizados para el contenido */
-        .step-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 9999px; /* rounded-full */
-            margin-right: 1rem; /* mr-4 */
-            color: white; /* text-white */
-            font-weight: 700; /* font-bold */
-            background-color: var(--columela-blue);
-        }
-    </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'columela-dark': '#0f172a', /* slate-900 */
-                        'columela-light': '#f1f5f9', /* slate-100 */
-                        'columela-yellow': '#facc15', /* amber-400 */
-                        'columela-blue': '#3b82f6', /* blue-500 */
-                        'columela-text': '#334155', /* slate-600 */
-                    },
-                },
-            },
-        };
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
 
-        // Función para cargar dinámicamente el header y footer
-        async function includeHTML(componentId, filePath) {
-            try {
-                const response = await fetch(filePath);
-                if (!response.ok) {
-                    throw new Error(`Error ${response.status}: No se pudo cargar el componente ${filePath}.`);
-                }
-                const html = await response.text();
-                document.getElementById(componentId).innerHTML = html;
-            } catch (error) {
-                console.error('Error al incluir HTML:', error);
-                document.getElementById(componentId).innerHTML = `<div class="p-4 bg-red-100 text-red-700 text-center">${error.message}</div>`;
-            }
-        }
+    
 
-        window.onload = function() {
-            includeHTML('header-container', 'header.html');
-            includeHTML('footer-container', 'footer.html');
-        };
-    </script>
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
 </head>
 <body class="bg-gray-50 font-sans antialiased">
 

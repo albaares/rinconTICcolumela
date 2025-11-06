@@ -3,61 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reserva de Material TIC - IES Columela</title>
-    <!-- Carga de Tailwind CSS -->
+    <title>Reserva de Material - Rincón TIC Columela</title>
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Configuración personalizada de Tailwind con colores corporativos (Columela) -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'columela-yellow': '#FBBA0E', 
-                        'columela-dark': '#111827',
-                        'columela-light': '#F9FAFB',
-                        'columela-blue': '#38A5DD',
-                    },
-                }
-            }
-        }
-    </script>
-    <!-- Estilos generales y carga de iconos -->
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos -->
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
-    <style>
-        /* Estilo para los botones de pestaña */
-        .tab-button {
-            @apply px-4 py-3 text-lg font-semibold border-b-4 border-transparent text-gray-600 hover:text-columela-blue hover:border-columela-blue transition duration-200;
-        }
-        .tab-button.active {
-            @apply text-columela-dark border-columela-yellow font-extrabold;
-        }
-        .item-card {
-            @apply bg-white p-5 rounded-lg border-2 border-gray-100 shadow-md hover:shadow-lg transition duration-300;
-        }
-        /* Estilo para la nota de No Disponible */
-        .not-available {
-            @apply text-sm font-bold text-red-500 bg-red-100 px-2 py-1 rounded-full inline-block mt-2;
-        }
-    </style>
-</head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
 
-    <!-- 1. Contenedor para la Cabecera (Se inyecta header.html aquí) -->
-    <div id="header-container">
-        <p class="text-center text-gray-500 py-4">Cargando cabecera...</p>
-    </div>
+    <!-- 5. Script de Lógica de Categorías y Datos: Se mantiene al final del body -->
+
+</head>
+<body class="bg-gray-50 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
 
     <!-- 2. Contenido Principal -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        <h1 class="text-4xl font-extrabold text-columela-dark mb-2 border-b pb-2">
+        <h1 class="text-4xl font-extrabold text-columela-dark mb-2 border-b-4 border-columela-yellow pb-2">
             Reserva y Uso de Material TIC
         </h1>
         <p class="text-xl text-gray-600 mb-8">
-            Consulta la ubicación de los recursos disponibles antes de realizar la reserva obligatoria en la Intranet del centro.
+            Consulta la ubicación, normativa clave y notas de uso de los recursos TIC disponibles.
         </p>
 
         <!-- SECCIÓN DE NORMAS CLAVE (MUY VISIBLE) -->
@@ -77,293 +52,99 @@
                 </li>
                 <li>
                     <span class="font-bold uppercase text-base">Reserva Obligatoria:</span> 
-                    El uso de cualquier material (carritos, kits, gafas) es <strong>OBLIGATORIO</strong> reservarlo previamente a través de la sección <span class="font-mono bg-red-200 px-1 rounded">Reservas -> TIC</span> de la Intranet.
+                    El uso de cualquier material (carritos, kits, gafas) es <strong>OBLIGATORIO</strong> reservarlo previamente a través de la sección <span class="font-mono bg-red-200 px-1 rounded text-red-900">Reservas -> TIC</span> de la Intranet.
                 </li>
                 <li>
                     <span class="font-bold uppercase text-base">Registro de Incidencias:</span> 
-                    Si detectas algún fallo en el equipo, gestiona la incidencia según la normativa <a href="reportar-incidencia.html" class="underline font-bold text-red-900 hover:text-red-600 transition duration-150">[ENLACE a la página de reportar-incidencia.html]</a>
+                    Si detectas algún fallo en el equipo, gestiona la incidencia según la normativa detallada en: <a href="reportar-incidencia.html" class="underline font-bold text-red-900 hover:text-red-600 transition duration-150 flex-grow-0">Página de Reporte de Incidencias <i class="ph ph-link-simple text-base align-middle ml-1"></i></a>
                 </li>
             </ul>
         </section>
 
         <!-- SECCIÓN DE CATEGORIZACIÓN DE MATERIAL -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold text-columela-dark mb-4">Tipo de Material a Reservar</h2>
+            <h2 class="text-2xl font-semibold text-columela-dark mb-4">Ubicación y Ficha de Recurso</h2>
 
             <!-- TABS/BOTONES DE CATEGORÍA -->
-            <div class="flex flex-wrap gap-2 md:gap-4 mb-6 border-b border-gray-200">
-                <button id="tab-portatiles" class="tab-button active" onclick="showCategory('portatiles')">
-                    Portátiles (Todos con EducaAndOS)
+            <!-- La línea de abajo crea un contenedor que actúa como la base de las pestañas -->
+            <div class="flex flex-wrap gap-2 md:gap-4 mb-6 border-b border-gray-200 bg-columela-light rounded-t-lg">
+                <!-- Los botones AHORA usan data-category en lugar de onclick -->
+                <button id="tab-portatiles" class="tab-button" data-category="portatiles">
+                    <i class="ph ph-laptop text-lg mr-1"></i> Carritos de Portátiles
                 </button>
-                <button id="tab-vr" class="tab-button" onclick="showCategory('vr')">
-                    Gafas de Realidad Virtual (9 uni.)
+                <button id="tab-vr" class="tab-button" data-category="vr">
+                    <i class="ph ph-virtual-reality text-lg mr-1"></i> Realidad Virtual
                 </button>
-                <button id="tab-robotica" class="tab-button" onclick="showCategory('robotica')">
-                    Kits de Robótica
+                <button id="tab-robotica" class="tab-button" data-category="robotica">
+                    <i class="ph ph-robot text-lg mr-1"></i> Kits de Robótica
                 </button>
-                <button id="tab-impresoras" class="tab-button" onclick="showCategory('impresoras')">
-                    Impresoras 3D (3 uni.)
+                <button id="tab-impresoras" class="tab-button" data-category="impresoras">
+                    <i class="ph ph-printer text-lg mr-1"></i> Impresoras 3D
                 </button>
             </div>
 
             <!-- CONTENIDO DINÁMICO DE CATEGORÍAS -->
-            <div id="content-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- El contenido se inyectará aquí con JavaScript -->
+            <!-- El contenido debe tener un fondo blanco para que las pestañas activas se vean bien -->
+            <div id="content-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 bg-white rounded-b-xl shadow-lg">
+                <!-- Contenido Inicial: Se carga automáticamente la categoría 'portatiles' al cargar la página -->
             </div>
         </section>
 
-        <!-- Enlace a la Intranet (Recuerdo) -->
+         <!-- GUÍA DE RESERVA EN INTRANET -->
         <div class="text-center p-6 bg-columela-blue/10 border border-columela-blue rounded-xl">
-            <p class="text-xl font-bold text-columela-dark mb-3">¿Listo para reservar?</p>
+            <p class="text-xl font-bold text-columela-dark mb-3">Guía Rápida: ¿Cómo reservar un recurso?</p>
             <p class="text-gray-700 mb-4">
-                Recuerda que esta es solo la guía de uso y ubicación. La reserva se realiza exclusivamente en:
+                La reserva de la mayoría de estos recursos se realiza exclusivamente a través del módulo de <a href="https://intranet.iescolumela.es/reservas/index.php?recurso=TIC" target="_blank">Reservas TIC de la Intranet del centro</a>
             </p>
-            <!-- Puedes añadir un enlace real a la Intranet aquí si lo tienes -->
-            <a href="https://intranet.iescolumela.es" target="_blank" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-columela-blue hover:bg-blue-700 transition duration-300">
-                <i class="ph ph-calendar-check text-xl mr-2"></i>
-                Acceder a la Intranet para Reservar
-            </a>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Pasos de Reserva -->
+                <ol class="space-y-3 text-sm text-gray-700">
+                    <li class="flex items-start">
+                        <span class="font-bold text-columela-blue mr-2 flex-shrink-0">1.</span>
+                        <span>Accede a la <a href="https://intranet.iescolumela.es/" target="_blank" class="text-columela-blue hover:underline font-semibold">Intranet del centro</a>.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold text-columela-blue mr-2 flex-shrink-0">2.</span>
+                        <span>Ve a la sección: Reservas <i class="ph ph-caret-right text-xs align-middle"></i> TIC.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold text-columela-blue mr-2 flex-shrink-0">3.</span>
+                        <span>Selecciona el botón Reservar junto al recurso deseado (ej. "Carro Portátiles 0").</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold text-columela-blue mr-2 flex-shrink-0">4.</span>
+                        <span>Elige la fecha y hora en el calendario y pulsa Reservar para confirmar.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold text-columela-blue mr-2 flex-shrink-0">5.</span>
+                        <span>(Opcional:) Utiliza el campo de observaciones si necesitas añadir alguna nota importante.</span>
+                    </li>
+                </ol>
+
+                <!-- Video y Enlace de ayuda -->
+                <div class="space-y-3 p-4 bg-white rounded-lg border border-gray-200">
+                    <p class="font-semibold text-columela-dark">Ayuda Adicional:</p>
+                    <a href="https://drive.google.com/file/d/1kR30dxO_e3X4CSUmErqTpNya3ojOmQIx/view?usp=drive_link" target="_blank" class="flex items-center text-sm text-columela-blue hover:text-blue-700 transition duration-150">
+                        <i class="ph ph-video-camera text-xl mr-2"></i>
+                        Ver videotutorial de reserva (PDF con pasos)
+                    </a>
+                    <p class="text-xs text-gray-500 pt-2 border-t mt-3">Recuerda: Si el recurso no tiene enlace de reserva, contacta con la coordinadora TDE.</p>
+                </div>
+            </div>
         </div>
+
+        
+        
 
     </main>
 
     <!-- 3. Contenedor para el Pie de Página (Se inyecta footer.html aquí) -->
-    <div id="footer-container">
-        <p class="text-center text-gray-500 py-4">Cargando pie de página...</p>
-    </div>
+    <div id="footer-container"></div>
 
-    <!-- Script de Inclusión Dinámica y Lógica de Categorías -->
-    <script>
-        // --- 1. DATOS DE LOS RECURSOS (Escalable) ---
-        // Se puede expandir este array con nuevos materiales
-        const resources = [
-            // DATOS DE CARRITOS (Todos Portátiles con EducaAndOS)
-            {
-                id: 'carrito0',
-                type: 'portatiles',
-                name: 'Carrito 0',
-                location: 'Primera planta, habitación de al lado de las escaleras del fondo, entre las aulas 15 y 16.',
-                notes: 'Todos los equipos usan **EducaAndOS**. Llave disponible en el corcho de la Sala de Profesorado.',
-                icon: 'ph-truck',
-                color: 'text-green-600',
-                available: true,
-                reservationLink: 'https://intranet.iescolumela.es' // Enlace de reserva de Intranet
-            },
-            {
-                id: 'carrito1',
-                type: 'portatiles',
-                name: 'Carrito 1',
-                location: 'Primera planta, habitación de al lado de las escaleras del fondo, entre las aulas 15 y 16.',
-                notes: 'Todos los equipos usan **EducaAndOS**. Llave disponible en el corcho de la Sala de Profesorado.',
-                icon: 'ph-truck',
-                color: 'text-green-600',
-                available: true,
-                reservationLink: 'https://intranet.iescolumela.es'
-            },
-            {
-                id: 'carrito2',
-                type: 'portatiles',
-                name: 'Carrito 2',
-                location: 'Tercera planta, aula 34.',
-                notes: 'Todos los equipos usan **EducaAndOS**. Llave azul (maestra) con el encargado.',
-                icon: 'ph-truck',
-                color: 'text-green-600',
-                available: true,
-                reservationLink: 'https://intranet.iescolumela.es'
-            },
-            {
-                id: 'carrito3',
-                type: 'portatiles',
-                name: 'Carrito 3',
-                location: 'Segunda planta, aula de Plástica y Tecnología.',
-                notes: 'Todos los equipos usan **EducaAndOS**. Llave azul (maestra) con el encargado.',
-                icon: 'ph-truck',
-                color: 'text-green-600',
-                available: true,
-                reservationLink: 'https://intranet.iescolumela.es'
-            },
-            
-            // GAFAS DE REALIDAD VIRTUAL (Meta Quest 2) - RESERVA NO DISPONIBLE
-            {
-                id: 'vr_quest2_kit',
-                type: 'vr',
-                name: 'Meta Quest 2 y 3 (9 Unidades)',
-                location: 'Departamento de Tecnología, Sala de Recursos Digitales.',
-                notes: 'Material en proceso de despliegue. **Reserva aún no disponible**. Contactar con el encargado TIC para uso específico.',
-                icon: 'ph-virtual-reality',
-                color: 'text-purple-600',
-                available: false,
-                reservationLink: null
-            },
-            
-            // KITS DE ROBÓTICA (mBot)
-            {
-                id: 'robotica_kit_mbot',
-                type: 'robotica',
-                name: 'Kits Robótica mBot',
-                location: 'Taller de Tecnología (Preguntar al jefe de departamento).',
-                notes: 'Requiere formación previa. Reserva obligatoria en Intranet.',
-                icon: 'ph-robot',
-                color: 'text-orange-600',
-                available: true,
-                reservationLink: 'https://intranet.iescolumela.es'
-            },
+    <!-- 5. Script de Lógica de Categorías y Datos: SOLUCIÓN AL ERROR -->
+    <!-- Al colocar el script aquí, nos aseguramos de que el DOM se haya cargado.
+         Además, hemos eliminado los onclick y usamos addEventListener. -->
+    <script src="reservar-material.js"></script>
 
-            // IMPRESORAS 3D (Ender Pro) - RESERVA NO DISPONIBLE
-            {
-                id: 'impresora_ender',
-                type: 'impresoras',
-                name: 'Impresoras 3D Ender Pro (3 Unidades)',
-                location: 'Taller de Tecnología (Sala de Impresión).',
-                notes: '**Reserva aún no disponible**. Solo personal autorizado para mantenimiento o proyectos especiales.',
-                icon: 'ph-printer',
-                color: 'text-gray-600',
-                available: false,
-                reservationLink: null
-            },
-        ];
-
-        // --- 2. LÓGICA DE VISUALIZACIÓN ---
-
-        /**
-         * Renderiza las tarjetas de material para la categoría seleccionada.
-         * @param {string} category - El tipo de material ('portatiles', 'vr', etc.).
-         */
-        function renderContent(category) {
-            const container = document.getElementById('content-container');
-            container.innerHTML = ''; // Limpiar contenido anterior
-
-            const items = resources.filter(item => item.type === category);
-
-            if (items.length === 0) {
-                container.innerHTML = `
-                    <div class="md:col-span-3 p-8 text-center bg-gray-100 rounded-lg text-gray-600">
-                        <i class="ph ph-package text-5xl mb-3 block"></i>
-                        <p class="text-xl font-medium">No hay recursos de esta categoría configurados todavía.</p>
-                        <p class="text-sm mt-1">Estamos trabajando para añadir más material reservable pronto.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'item-card';
-
-                let footerContent;
-                if (item.available) {
-                    footerContent = `
-                        <a href="${item.reservationLink}" target="_blank" class="block mt-4 text-center text-sm font-medium text-columela-blue hover:text-blue-700 transition duration-150">
-                            Reservar en Intranet <i class="ph ph-arrow-square-out text-base align-middle ml-1"></i>
-                        </a>
-                    `;
-                } else {
-                    footerContent = `
-                        <span class="not-available">RESERVA AÚN NO DISPONIBLE</span>
-                    `;
-                }
-                
-                // Procesar la nota para aplicar negrita al texto entre ** (solo en este caso para resaltar el SO)
-                const processedNotes = item.notes.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-                card.innerHTML = `
-                    <div class="flex items-center mb-3">
-                        <i class="ph ${item.icon} text-3xl ${item.color} mr-3"></i>
-                        <h3 class="text-xl font-bold text-columela-dark">${item.name}</h3>
-                    </div>
-                    
-                    <p class="text-base font-semibold text-gray-700 mt-2">Ubicación:</p>
-                    <p class="text-gray-600">${item.location}</p>
-
-                    <p class="text-sm font-semibold text-gray-700 mt-4">Notas:</p>
-                    <p class="text-sm text-gray-600">${processedNotes}</p>
-                    
-                    <div class="mt-4 border-t pt-3 flex justify-center">
-                        ${footerContent}
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        /**
-         * Cambia la categoría activa y actualiza el contenido.
-         * @param {string} category - La categoría a mostrar.
-         */
-        function showCategory(category) {
-            // Desactivar todos los botones
-            document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Activar el botón correspondiente
-            const activeTab = document.getElementById(`tab-${category}`);
-            if (activeTab) {
-                activeTab.classList.add('active');
-            }
-            
-            // Renderizar el contenido
-            renderContent(category);
-        }
-        
-        // --- 3. INCLUSIÓN DINÁMICA DE HEADER/FOOTER ---
-
-        /**
-         * Función para incluir dinámicamente archivos HTML externos.
-         */
-        async function includeHTML(file, targetId) {
-            const targetElement = document.getElementById(targetId);
-            if (!targetElement) {
-                console.error(`Error: Elemento objetivo con ID '${targetId}' no encontrado.`);
-                return;
-            }
-
-            try {
-                // Simulación de fetch, ya que no podemos acceder a archivos locales en este entorno
-                // En un entorno real, estos archivos (header.html, footer.html) deben existir
-                const dummyContent = {
-                    'header.html': `
-                        <header class="bg-columela-dark shadow-md">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="logoredondo.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/111827/FFFFFF?text=IES'" alt="Logo IES Columela" class="h-10 w-10 rounded-full mr-3">
-                                    <span class="text-2xl font-bold text-columela-yellow">IES Columela TIC</span>
-                                </div>
-                                <nav class="space-x-4">
-                                    <a href="reservar-material.html" class="text-white hover:text-columela-yellow transition duration-150 font-medium">Material</a>
-                                    <a href="reportar-incidencia.html" class="text-white hover:text-columela-yellow transition duration-150 font-medium">Incidencias</a>
-                                </nav>
-                            </div>
-                        </header>
-                    `,
-                    'footer.html': `
-                        <footer class="bg-columela-dark text-white mt-12">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm border-t border-columela-yellow/20">
-                                <p>&copy; ${new Date().getFullYear()} IES Columela. Gestión de Recursos TIC.</p>
-                                <p class="mt-1">Contacto: tic@iescolumela.es</p>
-                            </div>
-                        </footer>
-                    `
-                };
-
-                const htmlText = dummyContent[file] || `<p class="text-center text-red-500 p-4">Error: Componente simulado ${file} no encontrado.</p>`;
-                targetElement.innerHTML = htmlText;
-
-            } catch (error) {
-                console.error(`Fallo en la inclusión dinámica de ${file}:`, error);
-                targetElement.innerHTML = `<p class="text-center text-red-500 p-4">Error: No se pudo cargar el componente ${file}.</p>`;
-            }
-        }
-
-        // Ejecutar inicialización
-        document.addEventListener('DOMContentLoaded', () => {
-            // Cargar header y footer
-            includeHTML('header.html', 'header-container');
-            includeHTML('footer.html', 'footer-container');
-
-            // Mostrar la categoría de portátiles por defecto
-            showCategory('portatiles');
-        });
-    </script>
 </body>
 </html>
