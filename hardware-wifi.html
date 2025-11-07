@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración WiFi - Rincón TIC</title>
+    
+
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+
+    
+
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
+
+     <!-- 2. Contenido Principal de la Página -->
+    <main class="app-content flex-grow">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            
+            <!-- Título y descripción de la página -->
+            <header class="page-header mb-8">
+                <h2 class="main-title">Configuración WiFi del Centro</h2>
+                <p class="main-subtitle">Guía visual para conectar tus dispositivos (portátiles, móviles y tablets) a la red WiFi del IES Columela según el sistema operativo.</p>
+            </header>
+
+            <!-- Contenedor del PDF -->
+            <section class="pdf-container bg-white p-6 shadow-lg rounded-lg border border-gray-200">
+                
+                
+
+                
+                <iframe 
+                    id="pdf-viewer" 
+                    src="../documentos/configuracion_wifi.pdf" 
+                    class="w-full h-[80vh] border border-gray-300 rounded-lg"
+                    title="Visor de PDF: Configuración WiFi IES Columela"
+                    aria-label="Documento PDF incrustado con las instrucciones de configuración WiFi">
+                    
+                    <!-- 
+                      Mensaje de fallback para navegadores que no soportan iframes 
+                      o si el PDF no se carga.
+                    -->
+                    <p>Tu navegador no soporta la visualización de PDFs incrustados. 
+                    Puedes <a href="../documentos/configuracion_wifi.pdf" download class="text-columela-blue hover:underline">descargar el documento aquí</a>
+                    para verlo.</p>
+                </iframe>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
+    <div id="footer-container"></div>
+
+</body>
+</html>
