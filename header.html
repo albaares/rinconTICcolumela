@@ -27,7 +27,7 @@
             <ul class="flex justify-start space-x-1">
                 <!-- Ítem de Inicio -->
                 <li>
-                    <a href="index.html" class="nav-link-item active bg-white text-columela-dark transition duration-300">
+                    <a href="index.html" data-nav-id="inicio" class="nav-link-item bg-white text-columela-dark transition duration-300">
                         Inicio
                     </a>
                 </li>
@@ -36,7 +36,7 @@
                 
                 <!-- Menú Desplegable de Hardware -->
                 <li class="group relative">
-                    <a href="hardware.html" class="nav-link-item flex items-center">
+                    <a href="hardware.html" data-nav-id="hardware" class="nav-link-item flex items-center">
                         Tutoriales de hardware 
                         <!-- Flecha Desplegable -->
                         <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -45,14 +45,14 @@
                     </a>
                     <!-- Submenú Desplegable -->
                     <ul class="absolute z-50 left-0 mt-0 w-60 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 transform scale-y-0 group-hover:scale-y-100 origin-top">
-                        <li><a href="hardware-pdi.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Pizarras Digitales</a></li>
+                        <li><a href="hardware-pdi.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">PDI SMART Board MX v5</a></li>
                         <li><a href="hardware-wifi.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Configuración WiFi</a></li>
-                        <li><a href="hardware-robotica.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Robótica y ATECA</a></li>
+                        
                     </ul>
                 </li>
                 
-                <li><a href="normativa.html" class="nav-link-item">Normativa y Buenas Prácticas</a></li>
-                <li><a href="plataformas.html" class="nav-link-item">Guías de Plataformas</a></li>
+                <li><a href="normativa.html" data-nav-id="normas" class="nav-link-item">Normativa y Buenas Prácticas</a></li>
+                <li><a href="plataformas.html" data-nav-id="guia" class="nav-link-item">Guías de Plataformas</a></li>
             </ul>
         </div>
     </nav>

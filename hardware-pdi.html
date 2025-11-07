@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantallas Digitales SMART Board MX v5 - Rincón TIC</title>
+    
+
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
+
+    <!-- 2. Contenido Principal de la Página -->
+    <main class="app-content flex-grow">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            
+            <!-- Título y descripción de la página -->
+            <header class="page-header mb-8">
+                <h2 class="main-title">Tutorial de pizarras digitales interactivas (PDI)</h2>
+                <p class="main-subtitle">Guías rápidas en vídeo y normas de uso para las PDI SMART del centro.</p>
+            </header>
+
+            <!-- Sección: Normas de Uso (CORREGIDA) -->
+            <section class="rules-section mb-12" id="normas-de-uso">
+                <h2 class="rules-section-title">
+                    <i class="ph-fill ph-warning-diamond text-xl"></i>
+                    Normas de uso importantes
+                </h2>
+                <ol class="rules-list">
+                    <li class="rule-item">
+                        <span class="rule-item-number">1</span>
+                        <div>
+                            <strong>Apagado completo al finalizar:</strong> Al terminar la jornada, apaga la pantalla completamente desde el menú (deslizar hacia abajo -> "Apagar"). No la dejes solo en standby (piloto rojo).
+                        </div>
+                    </li>
+                    <li class="rule-item">
+                        <span class="rule-item-number">2</span>
+                        <div>
+                            <strong>Cierra siempre tu sesión:</strong> Si has iniciado sesión con tu cuenta (Google, etc.), recuerda siempre cerrar la sesión antes de salir del aula por protección de datos (LOPD).
+                        </div>
+                    </li>
+                    <!-- NUEVA NORMA AÑADIDA -->
+                    <li class="rule-item">
+                        <span class="rule-item-number">3</span>
+                        <div>
+                            <strong>Devolver el lápiz a su sitio:</strong> Al terminar, deja el lápiz (stylus) en la bandeja magnética inferior de la pantalla para el siguiente compañero.
+                        </div>
+                    </li>
+                    <li class="rule-item">
+                        <span class="rule-item-number">4</span> <!-- Renumerado (era 3) -->
+                        <div>
+                            <strong>No bloquear el acceso:</strong> La pantalla es un recurso compartido. NUNCA establezcas un PIN, contraseña o patrón de bloqueo en el sistema Android.
+                        </div>
+                    </li>
+                    <li class="rule-item">
+                        <span class="rule-item-number">5</span> <!-- Renumerado (era 4) -->
+                        <div>
+                            <strong>Usar solo material autorizado:</strong> Utiliza exclusivamente los lápices (stylus) de la PDI o los dedos. NUNCA uses rotuladores ni bolígrafos.
+                        </div>
+                    </li>
+                    <li class="rule-item">
+                        <span class="rule-item-number">6</span> <!-- Renumerado (era 5) -->
+                        <div>
+                            <strong>Limpieza en seco:</strong> No pulverices líquidos (limpiacristales, alcohol, etc.) directamente sobre la pantalla. Límpiala solo con un paño de microfibra suave y seco.
+                        </div>
+                    </li>
+                    <li class="rule-item">
+                        <span class="rule-item-number">7</span> <!-- Renumerado (era 6) -->
+                        <div>
+                            <strong>Cuidado con las conexiones:</strong> No fuerces los cables (HDMI, USB) al conectarlos o desconectarlos. Todas las pantallas tienen sus conexiones establecidas, no deberías tocarlas.
+                        </div>
+                    </li>
+                    <li class="rule-item">
+                        <span class="rule-item-number">8</span> <!-- Renumerado (era 7) -->
+                        <div>
+                            <strong>No modificar ajustes desconocidos:</strong> Si no sabes cómo funciona un ajuste, por favor, no lo modifiques. Consulta este tutorial o a la coordinación TDE.
+                        </div>
+                    </li>
+                    <li class="rule-item">
+                        <span class="rule-item-number">9</span> <!-- Renumerado (era 8) -->
+                        <div>
+                            <strong>Reportar incidencias:</strong> Si la pantalla falla, registra la incidencia en la Intranet. Si no sabes cómo se hace, visita la página de <a href="reportar-incidencia.html" class="underline">reportar incidencias</a> de esta web.
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+
+            <!-- 
+              Navegación Rápida (Índice de la página)
+            -->
+            <nav class="bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-10">
+                <h3 class="text-xl font-semibold text-columela-dark mb-4">En esta página...</h3>
+                <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <li><a href="#normas-de-uso" class="quick-nav-link"><i class="ph ph-warning-diamond"></i> Normas de uso</a></li>
+                    <li><a href="#primeros-pasos" class="quick-nav-link"><i class="ph ph-rocket"></i> Primeros pasos</a></li>
+                    <li><a href="#pizarra-blanca" class="quick-nav-link"><i class="ph ph-chalkboard-teacher"></i> Pizarra blanca</a></li>
+                    <li><a href="#compartir-archivos" class="quick-nav-link"><i class="ph ph-share-network"></i> Compartir y archivos</a></li>
+                    <li><a href="#smart-mirror" class="quick-nav-link"><i class="ph ph-device-mobile-camera"></i> Smart Mirror</a></li>
+                    <li><a href="#smart-ink" class="quick-nav-link"><i class="ph ph-paint-brush"></i> Smart Ink (Windows)</a></li>
+                </ul>
+            </nav>
+
+            <!-- Sección: Primeros Pasos -->
+            <section id="primeros-pasos" class="mb-12 bg-white p-6 sm:p-8 rounded-lg shadow-lg border border-gray-200">
+                <h2 class="tutorial-section-title">Primeros pasos y configuración</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Cambiar entre Android y Windows (OPS)</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/yu7ocJRsEk0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li>Conectamos un teclado a la pantalla.</li>
+                            <li>Elegimos en la fuente de vídeo (botón 'Fuente') la opción 'OPS'.</li>
+                            <li>Pulsamos repetidamente F2 mientras arranca para elegir el Sistema Operativo.</li>
+                        </ul>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Características principales</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/jdcqeBAgmEI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Encendido y apagado correcto</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/dNTZ9qfvpE8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li><strong>Stand by (Recomendado):</strong> Botón físico para apagar/encender la pantalla (LED se pone rojo).</li>
+                            <li><strong>Apagado Total:</strong> Deslizar el dedo hacia abajo en la pantalla, pulsar el icono de encendido y elegir 'Apagar'.</li>
+                            <li>Si el LED está apagado (ni rojo ni verde), pulsar el interruptor físico trasero.</li>
+                        </ul>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Características del SO (Android iQ)</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/2nrj6GW-CCQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li>La pantalla dispone de un sistema Android (iQ 4) integrado.</li>
+                            <li>No es necesario iniciar sesión para las funciones básicas (pizarra, proyector).</li>
+                            <li>Se puede iniciar sesión para personalizar el entorno y guardar archivos.</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Inicio de sesión (personalización)</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/gn8Ea8IXdhk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li>Pulsar el icono 'Iniciar Sesión' en la pantalla de inicio.</li>
+                            <li>Opciones: Iniciar con Google, escanear código QR, o usar la web y el código.</li>
+                            <li>Para cerrar sesión, pulsar de nuevo en el icono de tu perfil.</li>
+                        </ul>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Personalizando tu entorno</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/Wmuuz1tnx-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li>Pulsar el icono de 'Apps' y arrastrarlas a la pantalla de inicio.</li>
+                            <li>Para quitar una app: mantener pulsado y arrastrarla hacia arriba (papelera).</li>
+                            <li>Para añadir widgets: mantener pulsada la pantalla de inicio.</li>
+                        </ul>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Ajustes del sistema (documentación)</h3>
+                        <div class="tutorial-card-content">
+                            <p>Para una guía detallada de todas las opciones de configuración del sistema Android iQ 4, puedes consultar la documentación oficial del fabricante.</p>
+                            <a href="https://support.smarttech.com/docs/software/iq/4/es/home.cshtml" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-columela-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors">
+                                <i class="ph ph-book-open"></i>
+                                Ver Documentación Oficial
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección: Pizarra Blanca -->
+            <section id="pizarra-blanca" class="mb-12 bg-white p-6 sm:p-8 rounded-lg shadow-lg border border-gray-200">
+                <h2 class="tutorial-section-title">Uso de la pizarra blanca digital</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Escribir, mover y borrar</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/WjmMe8keYQM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Añadir páginas y herramientas</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/UlXTc9QkzwQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Añadir imágenes y vídeos</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/qpNPIVsMLEQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Herramientas matemáticas</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/VO-XyTXxs5g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Sección: Compartir y Archivos -->
+            <section id="compartir-archivos" class="mb-12 bg-white p-6 sm:p-8 rounded-lg shadow-lg border border-gray-200">
+                <h2 class="tutorial-section-title">Compartir la pizarra y trabajar con archivos</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Compartir la pizarra con alumnado</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/WUVzuGGnrkM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li>En la Pizarra, pulsar el icono de 2 personas (compartir).</li>
+                            <li>Aparece un código QR y una dirección web con un código para que el alumnado se conecte.</li>
+                        </ul>
+                    </article>
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Trabajar con archivos en el panel</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/VFSl-_xlEyc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li><strong>Importante:</strong> Debes haber iniciado sesión para que tus archivos se guarden en la nube.</li>
+                            <li>Acceder al icono de la 'Carpeta' (Gestor de Archivos) para ver tus documentos.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección: Smart Mirror -->
+            <section id="smart-mirror" class="mb-12 bg-white p-6 sm:p-8 rounded-lg shadow-lg border border-gray-200">
+                 <h2 class="tutorial-section-title">Smart Mirror (proyección inalámbrica)</h2>
+                <div class="grid grid-cols-1 gap-8">
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Enviar contenido (duplicar pantalla)</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/vazS2-xTJn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li>Permite enviar el contenido de cualquier dispositivo (PC, móvil, tablet) a la PDI de forma inalámbrica.</li>
+                            <li>Pulsar el botón 'Smart Mirror' en la PDI (segundo icono empezando por la izquierda).</li>
+                            <li>Desde el dispositivo, acceder a la URL que se muestra en pantalla e introducir el código.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección: Smart Ink -->
+            <section id="smart-ink" class="mb-12 bg-white p-6 sm:p-8 rounded-lg shadow-lg border border-gray-200">
+                <h2 class="tutorial-section-title">Smart Ink (anotaciones en Windows - OPS)</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Instalación de Smart Ink</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/FdNtOp5cW74" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <ul class="tutorial-card-list">
+                            <li>En Windows (OPS), abrir un navegador y ir a <strong>smarttech.com</strong>.</li>
+                            <li>Ruta: "Asistencia técnica" -> "Descargas y controladores" -> "Smart Product Driver Ink".</li>
+                            <li>Descargar e instalar el software.</li>
+                            <li>Verificar que aparece el icono de Smart Ink en la barra de tareas de Windows.</li>
+                        </ul>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Aspectos generales de Smart Ink</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/T_SOQSXRN9o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                         <ul class="tutorial-card-list">
+                            <li>Pulsar el icono de Smart en la barra de tareas y elegir 'Ink' (Tinta).</li>
+                            <li>Permite escribir y anotar encima de cualquier aplicación de Windows (Navegador, PDF, Documentos...).</li>
+                        </ul>
+                    </article>
+
+                    <article class="tutorial-card">
+                        <h3 class="tutorial-card-title">Grabadora de pantalla</h3>
+                        <div class="tutorial-video-container">
+                            <iframe src="https://www.youtube.com/embed/Gl2q4O9Q19M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                         <ul class="tutorial-card-list">
+                            <li>Pulsar el icono de Smart en la barra de tareas y elegir 'Grabadora'.</li>
+                            <li>Permite grabar un vídeo de lo que ocurre en la pantalla (ideal para crear tutoriales).</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
+    <div id="footer-container"></div>
+
+</body>
+</html>

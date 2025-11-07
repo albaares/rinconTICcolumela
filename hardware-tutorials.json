@@ -1,0 +1,16 @@
+[
+  {
+    "id": "pdi-smart",
+    "title": "Pizarras Digitales (Smart Board)",
+    "description": "Tutorial completo: normas de uso, primeros pasos, pizarra blanca, Smart Ink y más.",
+    "url": "hardware-pdi.html",
+    "icon": "ph-chalkboard-teacher"
+  },
+  {
+    "id": "wifi-config",
+    "title": "Configuración WiFi del Centro",
+    "description": "Guía visual para conectar portátiles, móviles y tablets a la red WiFi del IES Columela.",
+    "url": "hardware-wifi.html",
+    "icon": "ph-wifi-high"
+  }
+]

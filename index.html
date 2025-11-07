@@ -10,12 +10,16 @@
      <!-- 2. Carga de la Configuración de Colores Centralizada -->
     <script src="tailwind.config.js"></script>
 
-    <!-- Carga de estilos personalizados (para variables CSS y efectos) -->
+    <!-- 3. Estilos -->
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     
     <!-- Carga de Phosphor Icons (para iconos de acciones rápidas) -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
@@ -112,46 +116,6 @@
     <div id="footer-container">
         <p class="text-center text-gray-500 py-4">Cargando pie de página...</p>
     </div>
-
-    <!-- Script de Inclusión Dinámica (Debe ir al final del <body>) -->
-    <script>
-        /**
-         * Función para incluir dinámicamente archivos HTML externos.
-         * @param {string} file - Ruta del archivo HTML a incluir (e.g., 'header.html').
-         * @param {string} targetId - ID del elemento donde se inyectará el contenido.
-         */
-        async function includeHTML(file, targetId) {
-            const targetElement = document.getElementById(targetId);
-            if (!targetElement) {
-                console.error(`Error: Elemento objetivo con ID '${targetId}' no encontrado.`);
-                return;
-            }
-
-            try {
-                // Intenta cargar el archivo de forma asíncrona
-                const response = await fetch(file);
-
-                if (!response.ok) {
-                    // Si la respuesta HTTP no es exitosa (e.g., 404 Not Found), lanza un error
-                    throw new Error(`Error al cargar ${file}. Estado: ${response.status}`);
-                }
-
-                // Obtiene el texto del archivo e inyéctalo en el elemento objetivo
-                const htmlText = await response.text();
-                targetElement.innerHTML = htmlText;
-
-            } catch (error) {
-                // Captura errores de red (CORS en local) o los errores lanzados arriba
-                console.error(`Fallo en la inclusión dinámica de ${file}:`, error);
-                targetElement.innerHTML = `<p class="text-center text-red-500 p-4">Error: No se pudo cargar el componente ${file}.</p>`;
-            }
-        }
-
-        // Ejecutar las inclusiones al cargar la página
-        document.addEventListener('DOMContentLoaded', () => {
-            includeHTML('header.html', 'header-container');
-            includeHTML('footer.html', 'footer-container');
-        });
-    </script>
+   
 </body>
 </html>

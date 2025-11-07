@@ -1,6 +1,6 @@
 // Archivo: dynamic-loader.js
 // Centraliza la función de inclusión dinámica de header y footer
-// para evitar repetir el código en cada página HTML.
+// y la lógica para activar el enlace de navegación correcto.
 
 /**
  * Función que carga un archivo HTML externo (componente) e inyecta
@@ -35,12 +35,62 @@ async function includeHTML(file, targetId) {
     }
 }
 
-// Ejecutar la carga del header y footer automáticamente al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    // Si necesitas que un script de página específico se ejecute DESPUÉS de la carga de componentes,
-    // es mejor usar un script específico para esa página (como hacemos con reservar-material.js)
+/**
+ * Activa el enlace de navegación correspondiente a la página actual.
+ * Utiliza los atributos 'data-nav-id' definidos en header.html.
+ */
+function setActiveNav() {
+    // 1. Obtener el nombre del archivo de la página actual
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+    // 2. Lógica para determinar el ID de navegación activo.
+    // Usamos startsWith() para agrupar páginas (ej. 'hardware-pdi.html' y 'hardware-wifi.html')
+    let activeNavId = 'inicio'; // Por defecto
+
+    if (currentPage.startsWith('hardware')) {
+        activeNavId = 'hardware';
+    } else if (currentPage.startsWith('normas')) { // 'normativa.html', 'normativa-lopd.html', etc.
+        activeNavId = 'normas';
+    } else if (currentPage.startsWith('plataformas')) { // 'plataformas.html', 'plataformas-moodle.html', etc.
+        activeNavId = 'plataformas';
+    } else if (currentPage.startsWith('guia-')) { // 'reportar-incidencia.html'
+        activeNavId = 'guia';
+    } else if (currentPage === 'index.html' || currentPage === '') {
+        activeNavId = 'inicio';
+    }
+
+    // 3. Aplicar la clase 'active' a los enlaces correctos
+    // Buscamos en *todo* el documento (escritorio y móvil)
+    const activeLinks = document.querySelectorAll(`[data-nav-id="${activeNavId}"]`);
     
-    // Carga del Header y Footer
-    includeHTML('header.html', 'header-container');
+    activeLinks.forEach(link => {
+        link.classList.add('active');
+        
+        // Lógica adicional para el menú móvil (abrir desplegable si está activo)
+        // Si el ID activo es 'hardware' y estamos en un enlace móvil...
+        if (activeNavId === 'hardware' && link.classList.contains('nav-link-item-mobile')) {
+             // ...Buscamos el submenú de hardware...
+             const submenu = document.getElementById('mobile-submenu-hardware');
+             // ...y si existe y está cerrado, lo abrimos.
+             if (submenu && submenu.classList.contains('max-h-0')) {
+                 submenu.classList.remove('max-h-0');
+                 submenu.classList.add('max-h-96'); // Ábrelo
+             }
+        }
+        // Puedes añadir lógica similar para 'plataformas' si tuviera submenú
+    });
+}
+
+
+// Ejecutar la carga del header y footer automáticamente al cargar la página
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Usamos 'await' para asegurar que el header se carga COMPLETAMENTE
+    await includeHTML('header.html', 'header-container');
+    
+    // 2. Cargamos el footer (no necesitamos esperar por él para el 'active')
     includeHTML('footer.html', 'footer-container');
+
+    // 3. AHORA, con el header ya en el DOM, ejecutamos la función
+    //    para activar el enlace de navegación correcto.
+    setActiveNav();
 });

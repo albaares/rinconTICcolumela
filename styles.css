@@ -218,3 +218,62 @@
     font-size: 1.25rem; /* Tamaño del icono */
     color: var(--columela-blue);
 }
+
+/* ----------------------------------- */
+/* PÁGINA: TUTORIALES (SECCIÓN NORMAS DE USO) */
+/* ----------------------------------- */
+
+/* Contenedor principal de la sección de normas */
+.rules-section {
+    background-color: #fffbeb; /* amarillo-50 */
+    border-radius: 0.5rem; /* 8px */
+    border: 1px solid #fef3c7; /* amarillo-100 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    overflow: hidden; /* Para que el título se ajuste a los bordes */
+}
+
+/* Título de la sección de normas */
+.rules-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 12px */
+    font-size: 1.25rem; /* 20px */
+    font-weight: 700;
+    padding: 1rem 1.5rem; /* 16px 24px */
+    background-color: #fef3c7; /* amarillo-100 */
+    color: #92400e; /* amarillo-800 */
+    border-bottom: 1px solid #fde68a; /* amarillo-200 */
+}
+
+/* Lista numerada de normas */
+.rules-list {
+    padding: 1.5rem; /* 24px */
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* 20px */
+}
+
+/* Cada elemento (fila) de la lista de normas */
+.rule-item {
+    display: flex;
+    align-items: flex-start; /* Alinea el número y el texto arriba */
+    gap: 1rem; /* 16px */
+    font-size: 0.95rem; /* 15.2px */
+    line-height: 1.6;
+    color: #78350f; /* amarillo-900 */
+}
+
+/* El círculo azul con el número */
+.rule-item-number {
+    flex-shrink: 0; /* Evita que el círculo se encoja */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem; /* 28px */
+    height: 1.75rem; /* 28px */
+    border-radius: 9999px; /* full */
+    background-color: var(--columela-blue);
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem; /* 14px */
+}
