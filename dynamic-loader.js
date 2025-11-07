@@ -49,8 +49,8 @@ function setActiveNav() {
 
     if (currentPage.startsWith('hardware')) {
         activeNavId = 'hardware';
-    } else if (currentPage.startsWith('normas')) { // 'normativa.html', 'normativa-lopd.html', etc.
-        activeNavId = 'normas';
+    } else if (currentPage.startsWith('normativa')) { // 'normativa.html', 'normativa-lopd.html', etc.
+        activeNavId = 'normativa';
     } else if (currentPage.startsWith('plataformas')) { // 'plataformas.html', 'plataformas-moodle.html', etc.
         activeNavId = 'plataformas';
     } else if (currentPage.startsWith('guia-')) { // 'reportar-incidencia.html'

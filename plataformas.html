@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guías de Plataformas - Rincón TIC</title>
+    
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Carga de Phosphor Icons (para los iconos de las tarjetas) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+</head>
+<body class="bg-gray-50 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
+
+    <!-- 2. Contenido Principal de la Página -->
+    <main class="app-content flex-grow">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            
+            <!-- Título y descripción de la página -->
+            <header class="page-header mb-8">
+                <h2 class="main-title">Guías de plataformas</h2>
+                <p class="main-subtitle">
+                    Tutoriales y guías de uso de las plataformas educativas del centro: Séneca, Moodle Centros, etc.
+                </p>
+            </header>
+
+            <!-- 
+              Contenedor de la cuadrícula.
+              El contenido de este DIV se generará dinámicamente
+              leyendo el archivo 'plataformas-tutorials.json'
+            -->
+            <section id="platform-grid-container" class="mt-10">
+                <div id="platform-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Las tarjetas de plataformas se insertarán aquí por JavaScript -->
+                    
+                    <!-- Mensaje de Carga -->
+                    <p id="loading-message" class="text-columela-text col-span-full">Cargando guías de plataformas...</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
+    <div id="footer-container"></div>
+
+
+    <!-- 
+      Script para cargar los tutoriales desde el JSON 
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Función para cargar y mostrar las plataformas
+            async function loadPlatforms() {
+                const gridContainer = document.getElementById('platform-grid');
+                const loadingMessage = document.getElementById('loading-message');
+
+                try {
+                    // Apuntamos al nuevo archivo JSON
+                    const response = await fetch('plataformas-tutorials.json'); 
+                    if (!response.ok) {
+                        throw new Error(`Error al cargar el archivo JSON: ${response.statusText}`);
+                    }
+                    const platforms = await response.json();
+
+                    // Limpiar el mensaje de carga
+                    gridContainer.innerHTML = ''; 
+
+                    // Generar una tarjeta por cada plataforma en el JSON
+                    platforms.forEach(platform => {
+                        // Reutilizamos el mismo estilo de tarjeta de las otras páginas
+                        const cardHTML = `
+                        <a href="${platform.url}" class="card-link-item group block bg-white p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 hover:border-columela-yellow focus:outline-none focus:ring-2 focus:ring-columela-blue">
+                            <div class="flex items-center justify-between mb-3">
+                                <i class="ph ${platform.icon} text-4xl text-columela-blue transition-transform duration-300 group-hover:scale-110"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-columela-dark mb-2 group-hover:text-columela-blue transition-colors duration-300">
+                                ${platform.title}
+                            </h3>
+                            <p class="text-sm text-columela-text">
+                                ${platform.description}
+                            </p>
+                        </a>
+                        `;
+                        gridContainer.innerHTML += cardHTML;
+                    });
+
+                } catch (error) {
+                    console.error('Error al cargar las plataformas:', error);
+                    gridContainer.innerHTML = '<p class="text-red-600 col-span-full">No se pudieron cargar las guías. Revisa el archivo <code>plataformas-tutorials.json</code>.</p>';
+                }
+            }
+
+            // Llamar a la función
+            loadPlatforms();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "seneca-ipasen",
+    "title": "Séneca / iPasen",
+    "description": "Gestión de faltas de asistencia, cuaderno del profesor, comunicación con familias y más.",
+    "url": "plataformas-seneca.html",
+    "icon": "ph-graduation-cap"
+  },
+  {
+    "id": "moodle-centros",
+    "title": "Moodle Centros",
+    "description": "Creación de cursos, matriculación, configuración de tareas, exámenes y banco de preguntas.",
+    "url": "plataformas-moodle.html",
+    "icon": "ph-books"
+  },
+  {
+    "id": "intranet",
+    "title": "Intranet (Gestión Interna)",
+    "description": "Registro de incidencias, reserva de recursos TIC/aulas y calendario de actividades.",
+    "url": "plataformas-intranet.html",
+    "icon": "ph-desktop"
+  }
+]
