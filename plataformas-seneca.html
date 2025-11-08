@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Séneca / iPasen - Rincón TIC</title>
+    
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Carga de Phosphor Icons (para el icono +/- del acordeón) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+</head>
+<body class="bg-gray-50 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
+
+    <!-- 2. Contenido Principal de la Página -->
+    <main class="app-content flex-grow">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            
+            <!-- Título y descripción de la página -->
+            <header class="page-header mb-8">
+                <h2 class="main-title">Guía de Séneca / iPasen</h2>
+                <p class="main-subtitle">
+                    Tutoriales rápidos y guías paso a paso de las funciones principales de Séneca e iPasen.
+                </p>
+            </header>
+
+            <!-- 
+              Contenedor del Acordeón.
+              El contenido de este DIV se generará dinámicamente
+              leyendo el archivo 'seneca-tutorials.json'
+            -->
+            <section id="accordion-container" class="mt-10 space-y-2">
+                <!-- Los items del acordeón se insertarán aquí por JavaScript -->
+                
+                <!-- Mensaje de Carga -->
+                <p id="loading-message" class="text-columela-text">Cargando tutoriales...</p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
+    <div id="footer-container"></div>
+
+
+    <!-- 
+      Script para cargar y gestionar el Acordeón 
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionContainer = document.getElementById('accordion-container');
+            const loadingMessage = document.getElementById('loading-message');
+
+            // --- 1. Función para Cargar los datos del JSON ---
+            async function loadAccordionTutorials() {
+                try {
+                    // *** MODIFICACIÓN: Añadido truco anti-caché ***
+                    // Esto evita que el navegador use una versión antigua del JSON
+                    const response = await fetch(`seneca-tutorials.json?v=${new Date().getTime()}`);
+                    if (!response.ok) {
+                        throw new Error(`Error al cargar el JSON: ${response.statusText}`);
+                    }
+                    const tutorials = await response.json();
+
+                    if (tutorials.length === 0) {
+                        loadingMessage.textContent = 'No hay tutoriales disponibles en este momento.';
+                        return;
+                    }
+                    
+                    loadingMessage.remove(); // Quitar mensaje de "Cargando..."
+                    
+                    // Generar el HTML para cada item del acordeón
+                    tutorials.forEach(tutorial => {
+                        const item = document.createElement('div');
+                        item.className = 'accordion-item';
+
+                        // --- Construcción del Botón (Título) ---
+                        const button = document.createElement('button');
+                        button.className = 'accordion-button';
+                        button.setAttribute('aria-expanded', 'false');
+                        button.innerHTML = `
+                            <span>${tutorial.title}</span>
+                            <i class="ph ph-plus accordion-icon"></i>
+                        `;
+
+                        // --- Construcción del Contenido (Desplegable) ---
+                        const content = document.createElement('div');
+                        content.className = 'accordion-content';
+
+                        let contentHTML = '<div class="accordion-content-inner">';
+
+                        // Añadir vídeo si existe
+                        if (tutorial.videoUrl) {
+                            contentHTML += `
+                                <div class="tutorial-video-container mb-4">
+                                    <iframe src="${tutorial.videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            `;
+                        }
+
+                        // Añadir pasos (texto) si existen
+                        if (tutorial.steps && tutorial.steps.length > 0) {
+                            // Usamos las clases de tu CSS para que la lista se vea bien
+                            contentHTML += '<ul>'; 
+                            tutorial.steps.forEach(step => {
+                                contentHTML += `<li>${step}</li>`;
+                            });
+                            contentHTML += '</ul>';
+                        }
+                        
+                        // *** INICIO DE LA MODIFICACIÓN (AÑADIR PDF) ***
+                        // Añadir botón de PDF si existe
+                        if (tutorial.pdfUrl) {
+                            // Añadimos un separador si ya había contenido (vídeo o steps)
+                            if (tutorial.videoUrl || (tutorial.steps && tutorial.steps.length > 0)) {
+                                contentHTML += '<div class="mt-5 pt-4 border-t border-gray-200">';
+                            } else {
+                                contentHTML += '<div>'; // Solo un div si no hay más contenido
+                            }
+                            
+                            contentHTML += `
+                                    <a href="${tutorial.pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-link-button">
+                                        <i class="ph ph-file-pdf"></i>
+                                        Ver documento PDF completo
+                                    </a>
+                                </div>
+                            `;
+                        }
+                        // *** FIN DE LA MODIFICACIÓN ***
+                        
+                        // Si no hay ni vídeo ni pasos NI PDF, mostrar un mensaje
+                        if (!tutorial.videoUrl && (!tutorial.steps || tutorial.steps.length === 0) && !tutorial.pdfUrl) {
+                             contentHTML += '<p>No hay contenido para este tutorial todavía.</p>';
+                        }
+
+                        contentHTML += '</div>'; // Cierre de .accordion-content-inner
+                        content.innerHTML = contentHTML;
+
+                        // Añadir botón y contenido al item
+                        item.appendChild(button);
+                        item.appendChild(content);
+                        
+                        // Añadir item al contenedor principal
+                        accordionContainer.appendChild(item);
+                    });
+
+                    // --- 2. Añadir los Event Listeners (después de crear el HTML) ---
+                    addAccordionListeners();
+
+                } catch (error) {
+                    console.error('Error al cargar los tutoriales del acordeón:', error);
+                    loadingMessage.innerHTML = '<p class="text-red-600">No se pudieron cargar los tutoriales.</p>';
+                }
+            }
+
+            // --- 3. Función para manejar los Clics del Acordeón ---
+            function addAccordionListeners() {
+                const buttons = document.querySelectorAll('.accordion-button');
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = button.nextElementSibling;
+                        const icon = button.querySelector('.accordion-icon');
+                        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                        // Cerrar todos los demás items (opcional, pero recomendado)
+                        buttons.forEach(btn => {
+                            if (btn !== button && btn.getAttribute('aria-expanded') === 'true') {
+                                btn.setAttribute('aria-expanded', 'false');
+                                btn.classList.remove('open');
+                                btn.nextElementSibling.classList.remove('open');
+                                btn.querySelector('.accordion-icon').classList.replace('ph-minus', 'ph-plus');
+                            }
+                        });
+                        
+                        // Abrir/Cerrar el item actual
+                        if (isExpanded) {
+                            button.setAttribute('aria-expanded', 'false');
+                            button.classList.remove('open');
+                            content.classList.remove('open');
+                            icon.classList.replace('ph-minus', 'ph-plus');
+                        } else {
+                            button.setAttribute('aria-expanded', 'true');
+                            button.classList.add('open');
+                            content.classList.add('open');
+                            icon.classList.replace('ph-plus', 'ph-minus');
+                        }
+                    });
+                });
+            }
+
+            // --- 4. Ejecutar la carga ---
+            loadAccordionTutorials();
+        });
+    </script>
+
+</body>
+</html>

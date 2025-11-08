@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Cómo grabar un parte de convivencia",
+    "videoUrl": null,
+    "steps": [
+      "Acceder a Séneca con perfil 'Tutor F'.",
+      "Ruta: Alumnado -> Part. centros Seguimiento de la Convivencia -> Alumnado incidente conducta contraria-grave.",
+      "Seleccionar Año, Curso y Unidad.",
+      "Hacer clic en el alumno/a y seleccionar 'Nueva conducta contraria-grave'.",
+      "Rellenar los campos: Fecha, Profesional, Tramo, Incidente, Descripción.",
+      "Marcar 'Se notifica a los/as tutores/as' e indicar la fecha de comunicación.",
+      "En 'Conductas', seleccionar del desplegable (o marcar 'Otras conductas' si no aparece).",
+      "En 'Correcciones', seleccionar 'Pendiente de sanción'.",
+      "Validar."
+    ],
+    "pdfUrl": "documentos/seneca-parte-convivencia.pdf"
+  },
+  {
+    "title": "Cómo rellenar el horario",
+    "videoUrl": null,
+    "steps": [
+      "Acceder a Séneca (perfil 'Profesorado').",
+      "Ruta: Personal -> Horario -> Horario semanal.",
+      "Rellenar el Horario Regular (25h) y el Horario Irregular (5h).",
+      "Horario Regular: Asignar 'Docencia' (con materia, nivel y aula) y 'Horas Complementarias' (Guardias, Reuniones de Dpto., etc.).",
+      "Horario Irregular (5h): Rellenar conceptos como 'Asist. Reuniones Equipo Técnico' (Jefes Dpto.), 'Asistencia a Claustro', 'Sesiones de evaluación', y 'Actividades de formación' hasta sumar 5h.",
+      "Validar."
+    ],
+    "pdfUrl": "documentos/seneca-rellenar-horario.pdf"
+  }
+]

@@ -277,3 +277,145 @@
     font-weight: 600;
     font-size: 0.875rem; /* 14px */
 }
+
+/* ----------------------------------- */
+/* ESTILOS DEL ACORDEÓN (Plataformas) */
+/* ----------------------------------- */
+
+.accordion-item {
+    background-color: white;
+    border: 1px solid #e5e7eb; /* border-gray-200 */
+    border-bottom-width: 0;
+    transition: box-shadow 0.2s;
+}
+.accordion-item:hover {
+     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* Redondeo del primer y último item */
+.accordion-item:first-of-type {
+    border-top-left-radius: 0.5rem; /* 8px */
+    border-top-right-radius: 0.5rem;
+}
+.accordion-item:last-of-type {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-width: 1px;
+}
+/* Evita doble borde cuando solo hay un item */
+.accordion-item:first-of-type:last-of-type {
+     border-bottom-width: 1px;
+}
+
+
+/* Botón/Título del acordeón */
+.accordion-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.5rem; /* 16px 24px */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+    text-align: left;
+    color: var(--columela-dark);
+    background-color: var(--columela-light); /* bg-columela-light */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.accordion-button:hover {
+    background-color: #f3f4f6; /* bg-gray-100 */
+}
+
+/* Estilos cuando el acordeón está ABIERTO */
+.accordion-button.open {
+     background-color: #f3f4f6; /* bg-gray-100 */
+     color: var(--columela-blue);
+     border-bottom: 1px solid #e5e7eb; /* border-gray-200 */
+}
+
+/* Icono +/- */
+.accordion-icon {
+    transition: transform 0.3s ease;
+    font-size: 1.25rem; /* 20px */
+    font-weight: bold;
+    color: var(--columela-blue);
+    flex-shrink: 0; /* Evita que el icono se encoja */
+    margin-left: 1rem;
+}
+.accordion-button.open .accordion-icon {
+    transform: rotate(180deg);
+}
+
+
+/* Contenido desplegable */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: white;
+}
+
+/* Clase .open que añade/quita JS */
+.accordion-content.open {
+    max-height: 5000px; /* Un valor alto para permitir cualquier contenido */
+    transition: max-height 0.4s ease-in;
+}
+
+/* Contenedor interno para dar padding al contenido */
+.accordion-content-inner {
+    padding: 1.5rem; /* 24px */
+}
+.accordion-content-inner p,
+.accordion-content-inner ul {
+    font-size: 0.95rem;
+    color: var(--columela-text);
+    line-height: 1.6;
+}
+.accordion-content-inner ul {
+    list-style-type: disc;
+    margin-left: 1.25rem; /* ml-5 */
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* espacio entre li */
+}
+/* Re-aplicamos el estilo de vídeo por si se usa dentro del acordeón */
+.tutorial-video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 0.5rem; /* 8px */
+    border: 1px solid #e5e7eb;
+}
+.tutorial-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.pdf-link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* 8px */
+    padding: 0.5rem 1rem; /* 8px 16px */
+    background-color: var(--columela-blue);
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem; /* 14px */
+    border-radius: 0.375rem; /* 6px */
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none; /* Quitar subrayado */
+}
+
+.pdf-link-button:hover {
+    background-color: #2c89b8; /* Azul un poco más oscuro */
+    color: white; /* Asegurar que el texto sigue blanco */
+}
+
+.pdf-link-button .ph {
+    font-size: 1.125rem; /* 18px */
+}
