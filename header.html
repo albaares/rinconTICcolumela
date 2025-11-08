@@ -32,53 +32,51 @@
                     </a>
                 </li>
                 
+                <!-- Gestión de recursos -->
                 <li class="group relative">
-                    <a href="gestion-recursos.html" data-nav-id="gestion" class="nav-link-item flex items-center">
+                    <a href="reservar-material.html" data-nav-id="gestion" class="nav-link-item flex items-center">
                         Gestión de recursos
-                        <!-- Flecha Desplegable -->
                         <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </a>
-                    <!-- Submenú Desplegable -->
                     <ul class="absolute z-50 left-0 mt-0 w-60 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 transform scale-y-0 group-hover:scale-y-100 origin-top">
                         <li><a href="reservar-material.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Reservar Material y Aulas</a></li>
                         <li><a href="reportar-incidencia.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Reportar Incidencia</a></li>
                     </ul>
                 </li>
+                
+                <!-- Tutoriales de hardware -->
                 <li class="group relative">
                     <a href="hardware.html" data-nav-id="hardware" class="nav-link-item flex items-center">
                         Tutoriales de hardware 
-                        <!-- Flecha Desplegable -->
                         <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </a>
-                    <!-- Submenú Desplegable -->
                     <ul class="absolute z-50 left-0 mt-0 w-60 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 transform scale-y-0 group-hover:scale-y-100 origin-top">
                         <li><a href="hardware-pdi.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">PDI SMART Board MX v5</a></li>
                         <li><a href="hardware-wifi.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Configuración WiFi</a></li>
                         
                     </ul>
                 </li>
+                
+                <li><a href="normativa.html" data-nav-id="normativa" class="nav-link-item">Normativa y Buenas Prácticas</a></li>
+
+                <!-- Guías de Plataformas -->
                 <li class="group relative">
                     <a href="plataformas.html" data-nav-id="plataformas" class="nav-link-item flex items-center">
                         Guías de Plataformas
-                        <!-- Flecha Desplegable -->
                         <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </a>
-                    <!-- Submenú Desplegable -->
                     <ul class="absolute z-50 left-0 mt-0 w-60 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 transform scale-y-0 group-hover:scale-y-100 origin-top">
                         <li><a href="plataformas-seneca.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Séneca / iPasen</a></li>
                         <li><a href="en-construccion.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Moodle</a></li>
-                        <li><a href="plataformas-intranet.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Intranet</a></li>
+                        <li><a href="en-construccion.html" class="block px-4 py-3 text-sm text-columela-dark hover:bg-columela-yellow transition duration-150 ease-in-out">Intranet</a></li>
                     </ul>
                 </li>
-                <li><a href="normativa.html" data-nav-id="normativa" class="nav-link-item">Normativa y Buenas Prácticas</a></li>
-                
-                
             </ul>
         </div>
     </nav>
@@ -88,6 +86,7 @@
         <ul class="flex flex-col space-y-1 px-4 py-2">
             <li><a href="index.html" class="block w-full text-left px-3 py-2 text-columela-dark bg-columela-light rounded-md transition duration-150 ease-in-out">Inicio</a></li>
             
+            <!-- Gestión de recursos (móvil) -->
             <li>
                 <button data-target="gestion-sub" class="flex justify-between items-center w-full text-left px-3 py-2 text-columela-dark hover:bg-columela-light rounded-md transition duration-150 ease-in-out">
                     Gestión de recursos
@@ -99,78 +98,11 @@
                 </ul>
             </li>
             
-            
+            <!-- Tutoriales de hardware (móvil) -->
             <li>
-                <!-- Hardware con Toggle para móvil (Tu código original) -->
                 <button data-target="hardware-sub" class="flex justify-between items-center w-full text-left px-3 py-2 text-columela-dark hover:bg-columela-light rounded-md transition duration-150 ease-in-out">
                     Tutoriales de hardware
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <ul id="hardware-sub" class="ml-4 max-h-0 overflow-hidden transition-all duration-300 ease-in-out space-y-1">
-                    <!-- He añadido un "Ver todos" para que sea consistente con la nueva "Guía de Plataformas" -->
-                    <li><a href="hardware.html" class="block px-3 py-2 text-sm text-columela-dark hover:bg-columela-light rounded-md">Ver todos</a></li> 
-                    <li><a href="hardware-pdi.html" class="block px-3 py-2 text-sm text-columela-dark hover:bg-columela-light rounded-md">Pizarras Digitales</a></li>
-                    <li><a href="hardware-wifi.html" class="block px-3 py-2 text-sm text-columela-dark hover:bg-columela-light rounded-md">Configuración WiFi</a></li>
-                    <li><a href="hardware-robotica.html" class="block px-3 py-2 text-sm text-columela-dark hover:bg-columela-light rounded-md">Robótica y ATECA</a></li>
-                </ul>
-            </li>
-            <li><a href="normativa.html" class="block w-full text-left px-3 py-2 text-columela-dark hover:bg-columela-light rounded-md transition duration-150 ease-in-out">Normativa y Buenas Prácticas</a></li>
-            
-            <!-- *** INICIO MODIFICACIÓN 4 (MÓVIL): Guías de Plataformas *** -->
-            <!-- Cambiado 'li' con 'a' por 'li' con 'button' + 'ul' de submenú -->
-            <li>
-                <button data-target="plataformas-sub" class="flex justify-between items-center w-full text-left px-3 py-2 text-columela-dark hover:bg-columela-light rounded-md transition duration-150 ease-in-out">
-                    Guías de Plataformas
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <ul id="plataformas-sub" class="ml-4 max-h-0 overflow-hidden transition-all duration-300 ease-in-out space-y-1">
-                    <li><a href="plataformas.html" class="block px-3 py-2 text-sm text-columela-dark hover:bg-columela-light rounded-md">Ver todas</a></li>
-                    <li><a href="plataformas-seneca.html" class="block px-3 py-2 text-sm text-columela-dark hover:bg-columela-light rounded-md">Séneca / iPasen</a></li>
-                    <li><a href="en-construccion.html" class="block px-3 py-2 text-sm text-columela-dark hover:bg-columela-light rounded-md">Moodle</a></li>
-                    <li><a href="en-construccion.html" class="block px-3 py-2 text-sm text-columela-dark hover:bg-columela-light rounded-md">Intranet</a></li>
-                </ul>
-            </li>
-            <!-- *** FIN MODIFICACIÓN 4 *** -->
-        </ul>
-    </div>
-</header>
-
-<script>
-    // Lógica del menú móvil (Menú Hamburguesa)
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuButton = document.getElementById('menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        // Toggle del menú principal
-        menuButton.addEventListener('click', () => {
-            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-            menuButton.setAttribute('aria-expanded', !isExpanded);
-            
-            if (mobileMenu.classList.contains('max-h-0')) {
-                mobileMenu.classList.remove('max-h-0');
-                mobileMenu.classList.add('max-h-screen'); // Usamos max-h-screen para una transición suave
-            } else {
-                mobileMenu.classList.remove('max-h-screen');
-                mobileMenu.classList.add('max-h-0');
-            }
-        });
-
-        // Toggle del submenú de Hardware en móvil
-        // (Este script tuyo es genérico y funciona para los nuevos botones, no hay que tocarlo)
-        document.querySelectorAll('[data-target]').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = button.getAttribute('data-target');
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement.classList.contains('max-h-0')) {
-                    targetElement.classList.remove('max-h-0');
-                    targetElement.classList.add('max-h-96'); // Suficiente altura para el submenú
-                } else {
-                    targetElement.classList.remove('max-h-96');
-                    targetElement.classList.add('max-h-0');
-                }
-            });
-        });
-    });
-</script>
+                    <li>
