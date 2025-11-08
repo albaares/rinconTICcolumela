@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de recursos - Rincón TIC</title>
+    
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Carga de Phosphor Icons (para el icono de la página) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+</head>
+<body class="bg-gray-50 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
+
+    <!-- 2. Contenido Principal de la Página -->
+    <main class="app-content flex-grow">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            
+            <section class="mb-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Botón: Reservar Material -->
+                <!-- MODIFICACIÓN: Añadido el enlace a reservar-material.html -->
+                <a href="reservar-material.html" class="quick-action-button flex items-center justify-between p-6 bg-white border-4 border-columela-blue rounded-xl shadow-lg transition duration-300 hover:border-columela-yellow hover:shadow-xl">
+                    <div class="flex items-center">
+                        <i class="ph ph-calendar-plus text-4xl text-columela-blue mr-4"></i>
+                        <div>
+                            <p class="text-xl font-bold text-columela-dark">RESERVAR MATERIAL</p>
+                            <p class="text-sm text-gray-600 mt-1">Acceso al sistema de reservas de carritos de tablets, Chromebooks y otros equipos.</p>
+                        </div>
+                    </div>
+                    <i class="ph ph-arrow-right text-3xl text-columela-blue"></i>
+                </a>
+                
+                <!-- Botón: Reportar Incidencia -->
+                <a href="reportar-incidencia.html" class="quick-action-button flex items-center justify-between p-6 bg-white border-4 border-columela-blue rounded-xl shadow-lg transition duration-300 hover:border-columela-yellow hover:shadow-xl">
+                    <div class="flex items-center">
+                        <i class="ph ph-warning-octagon text-4xl text-red-500 mr-4"></i>
+                        <div>
+                            <p class="text-xl font-bold text-columela-dark">REPORTAR INCIDENCIA</p>
+                            <p class="text-sm text-gray-600 mt-1">Notifica fallos de hardware, problemas de red o software de forma rápida.</p>
+                        </div>
+                    </div>
+                    <i class="ph ph-arrow-right text-3xl text-columela-blue"></i>
+                </a>
+            </div>
+        </section>
+
+        </div>
+    </main>
+
+    <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
+    <div id="footer-container"></div>
+
+</body>
+</html>

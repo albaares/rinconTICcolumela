@@ -55,6 +55,8 @@ function setActiveNav() {
         activeNavId = 'plataformas';
     } else if (currentPage.startsWith('guia-')) { // 'reportar-incidencia.html'
         activeNavId = 'guia';
+    } else if (currentPage.startsWith('gestion-') || currentPage.startsWith('reservar-material') || currentPage.startsWith('reportar-incidencia')) { // 'reportar-incidencia.html'
+        activeNavId = 'gestion';
     } else if (currentPage === 'index.html' || currentPage === '') {
         activeNavId = 'inicio';
     }
