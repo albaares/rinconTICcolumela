@@ -77,13 +77,13 @@ function initializeMobileMenu() {
         const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
         menuButton.setAttribute('aria-expanded', !isExpanded);
         
-        // Esta es la lógica original de tu header.html
-        if (mobileMenu.classList.contains('max-h-0')) {
-            mobileMenu.classList.remove('max-h-0');
+        
+        if (mobileMenu.classList.contains('max-h-0')) {            
+            mobileMenu.classList.remove('max-h-0', 'overflow-hidden');
             mobileMenu.classList.add('max-h-screen'); // Usamos max-h-screen para una transición suave
-        } else {
+        } else {            
             mobileMenu.classList.remove('max-h-screen');
-            mobileMenu.classList.add('max-h-0');
+            mobileMenu.classList.add('max-h-0', 'overflow-hidden');
         }
     });
 
@@ -96,11 +96,13 @@ function initializeMobileMenu() {
             const targetElement = document.getElementById(targetId);
             
             if (targetElement.classList.contains('max-h-0')) {
-                targetElement.classList.remove('max-h-0');
+                // *** CORRECCIÓN ***: Quitamos 'overflow-hidden' al abrir
+                targetElement.classList.remove('max-h-0', 'overflow-hidden');
                 targetElement.classList.add('max-h-96'); // Suficiente altura para el submenú
             } else {
+                // *** CORRECCIÓN ***: Añadimos 'overflow-hidden' al cerrar
                 targetElement.classList.remove('max-h-96');
-                targetElement.classList.add('max-h-0');
+                targetElement.classList.add('max-h-0', 'overflow-hidden');
             }
         });
     });
