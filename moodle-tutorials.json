@@ -1,8 +1,8 @@
 [
   {
     "id": "moodle-migracion",
-    "title": "Migración de Cursos (Fin de Curso)",
-    "description": "Tutorial completo (Copia, Creación, Restauración) para mover tus aulas al nuevo curso.",
+    "title": "Migración de cursos",
+    "description": "Tutorial completo (copia, creación y restauración) para mover tus aulas al nuevo curso.",
     "url": "plataformas-moodle-migracion.html",
     "icon": "ph-rocket-launch"
   },
