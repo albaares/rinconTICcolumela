@@ -7,10 +7,25 @@
     "icon": "ph-rocket-launch"
   },
   {
-    "id": "moodle-pdf-calificaciones",
-    "title": "Guía PDF: Calificaciones",
-    "description": "Documento PDF oficial sobre cómo configurar y usar el libro de calificaciones.",
-    "url": "documentos/moodle-calificaciones.pdf",
+    "id": "moodle-guia-alumnado",
+    "title": "Manual básico para alumnado",
+    "description": "Documento PDF realizado por la coordinadora TDE que sirve de guía de uso básico para el alumnado.",
+    "url": "documentos/moodle-alumnado.pdf",
+    "icon": "ph-file-pdf"
+  },
+  {
+    "id": "moodle-guia-docente",
+    "title": "Manual básico para docentes",
+    "description": "Documento PDF realizado por la Junta de Andalucía que sirve de guía de uso básico para el profesorado.",
+    "url": "documentos/moodle-profesorado.pdf",
+    "icon": "ph-file-pdf"
+  },
+  {
+    "id": "moodle-guia-gestor",
+    "title": "Manual básico para rol gestor",
+    "description": "Documento PDF realizado por la Junta de Andalucía que sirve de guía de uso básico para el profesorado con el rol gestor (tus propias aulas de la Moodle).",
+    "url": "documentos/moodle-profesorado-gestor.pdf",
     "icon": "ph-file-pdf"
   }
 ]
+
