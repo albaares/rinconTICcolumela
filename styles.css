@@ -419,3 +419,60 @@
 .pdf-link-button .ph {
     font-size: 1.125rem; /* 18px */
 }
+
+/* El fondo oscuro semitransparente */
+.modal-overlay {
+    position: fixed; /* Se queda fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente */
+    display: none; /* Oculto por defecto */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    padding: 1rem; /* Espacio para que no se pegue en móviles */
+    overflow-y: auto; /* Permite scroll si el modal es muy alto */
+}
+
+/* Cuando se añade la clase .open, se muestra */
+.modal-overlay.open {
+    display: flex;
+}
+
+/* El contenedor blanco del contenido */
+.modal-content {
+    background-color: white;
+    padding: 1.5rem; /* 24px */
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-width: 42rem; /* equivale a max-w-3xl de Tailwind */
+    max-height: 90vh; /* Máxima altura del 90% de la ventana */
+    display: flex;
+    flex-direction: column;
+}
+
+/* El cuerpo del modal, que tendrá scroll si es necesario */
+.modal-body {
+    margin-top: 1rem; /* 16px */
+    overflow-y: auto; /* Scroll SÓLO en esta parte */
+    padding-right: 0.5rem; /* Pequeño espacio para la barra de scroll */
+}
+
+/* Estilos para el contenido del modal (reutilizamos los del acordeón) */
+.modal-body p,
+.modal-body ul {
+    font-size: 0.95rem;
+    color: var(--columela-text);
+    line-height: 1.6;
+}
+.modal-body ul {
+    list-style-type: disc;
+    margin-left: 1.25rem; /* ml-5 */
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* espacio entre li */
+}

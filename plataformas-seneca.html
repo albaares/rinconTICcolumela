@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Séneca / iPasen - Rincón TIC</title>
+    <!-- Título actualizado -->
+    <title>Guía de Séneca - Rincón TIC</title>
     
     <!-- 1. Carga de Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +16,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
-    <!-- Carga de Phosphor Icons (para el icono +/- del acordeón) -->
+    <!-- Carga de Phosphor Icons (para los iconos de las tarjetas) -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     
     <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
@@ -28,204 +29,227 @@
 
     <!-- 2. Contenido Principal de la Página -->
     <main class="app-content flex-grow">
-
-        <!-- Inicio del Breadcrumb (Migas de Pan). -->
+        
+        <!-- Breadcrumbs (Migas de Pan) -->
         <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
             <ol class="flex items-center space-x-2 text-sm text-columela-text">
                 <li>
-                    <a href="index.html" class="flex items-center text-columela-blue hover:underline"><i class="ph ph-house mr-1.5"></i>Inicio</a>
+                    <a href="index.html" class="flex items-center text-columela-blue hover:underline">
+                        <i class="ph ph-house mr-1.5"></i>
+                        Inicio
+                    </a>
                 </li>
-                <li><i class="ph ph-caret-right text-gray-400"></i></li>
                 <li>
-                    <a href="plataformas.html" class="text-columela-blue hover:underline">Guías de Plataformas</a>
+                    <i class="ph ph-caret-right text-gray-400"></i>
                 </li>
-                <li><i class="ph ph-caret-right text-gray-400"></i></li>
                 <li>
-                    <span class="font-medium text-gray-500" aria-current="page">Guía de Séneca</span>
+                    <a href="plataformas.html" class="text-columela-blue hover:underline">
+                        Guías de Plataformas
+                    </a>
+                </li>
+                <li>
+                    <i class="ph ph-caret-right text-gray-400"></i>
+                </li>
+                <li>
+                    <span class="font-medium text-gray-500" aria-current="page">
+                        Guía de Séneca
+                    </span>
                 </li>
             </ol>
         </nav>
-        <!-- Fin del Breadcrumb. -->
-        
+
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             
             <!-- Título y descripción de la página -->
             <header class="page-header mb-8">
                 <h1 class="text-3xl sm:text-4xl font-extrabold text-columela-dark mb-8 text-center border-b-2 border-columela-yellow pb-2">
-                Guía de Séneca / iPasen
+                Guía de Séneca
                 </h1>
                 <p class="mb-4 text-lg text-center">
-                    Tutoriales rápidos y guías paso a paso de las funciones principales de Séneca e iPasen.
+                    Guías y tutoriales para el profesorado sobre el Portal Séneca. Aprende a pasar lista, gestionar el cuaderno de clase, registrar tu horario y tramitar partes de convivencia.
                 </p>
             </header>
 
-
             <!-- 
-              Contenedor del Acordeón.
-              El contenido de este DIV se generará dinámicamente
-              leyendo el archivo 'seneca-tutorials.json'
+              Contenedor de la cuadrícula de tarjetas.
+              El contenido se generará leyendo 'seneca-tutorials.json'
             -->
-            <section id="accordion-container" class="mt-10 space-y-2">
-                <!-- Los items del acordeón se insertarán aquí por JavaScript -->
-                
-                <!-- Mensaje de Carga -->
-                <p id="loading-message" class="text-columela-text">Cargando tutoriales...</p>
+            <section id="platform-grid-container" class="mt-10">
+                <div id="platform-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Las tarjetas de plataformas se insertarán aquí por JavaScript -->
+                    <p id="loading-message" class="text-columela-text col-span-full">Cargando guías de Séneca...</p>
+                </div>
             </section>
 
         </div>
     </main>
+
+    <!-- 
+      Contenedor para los Modales (Pop-ups)
+      Se rellenará dinámicamente por el script
+    -->
+    <div id="modal-container"></div>
 
     <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
     <div id="footer-container"></div>
 
 
     <!-- 
-      Script para cargar y gestionar el Acordeón 
+      Script para cargar los tutoriales (Modal o Link) desde el JSON 
     -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const accordionContainer = document.getElementById('accordion-container');
+            const gridContainer = document.getElementById('platform-grid');
+            const modalContainer = document.getElementById('modal-container');
             const loadingMessage = document.getElementById('loading-message');
 
-            // --- 1. Función para Cargar los datos del JSON ---
-            async function loadAccordionTutorials() {
+            async function loadSenecaTutorials() {
                 try {
-                    // *** MODIFICACIÓN: Añadido truco anti-caché ***
-                    // Esto evita que el navegador use una versión antigua del JSON
-                    const response = await fetch(`seneca-tutorials.json?v=${new Date().getTime()}`);
+                    const response = await fetch(`seneca-tutorials.json?v=${new Date().getTime()}`); 
                     if (!response.ok) {
-                        throw new Error(`Error al cargar el JSON: ${response.statusText}`);
+                        throw new Error(`Error al cargar el archivo JSON: ${response.statusText}`);
                     }
                     const tutorials = await response.json();
 
-                    if (tutorials.length === 0) {
-                        loadingMessage.textContent = 'No hay tutoriales disponibles en este momento.';
-                        return;
-                    }
-                    
-                    loadingMessage.remove(); // Quitar mensaje de "Cargando..."
-                    
-                    // Generar el HTML para cada item del acordeón
-                    tutorials.forEach(tutorial => {
-                        const item = document.createElement('div');
-                        item.className = 'accordion-item';
+                    gridContainer.innerHTML = ''; 
+                    modalContainer.innerHTML = ''; // Limpiar contenedores
 
-                        // --- Construcción del Botón (Título) ---
-                        const button = document.createElement('button');
-                        button.className = 'accordion-button';
-                        button.setAttribute('aria-expanded', 'false');
-                        button.innerHTML = `
-                            <span>${tutorial.title}</span>
-                            <i class="ph ph-plus accordion-icon"></i>
+                    tutorials.forEach(tutorial => {
+                        let cardHTML = '';
+                        
+                        // Clase base de la tarjeta (común para link y modal)
+                        const cardClasses = "card-link-item group block bg-white p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 hover:border-columela-yellow focus:outline-none focus:ring-2 focus:ring-columela-blue";
+                        
+                        // Contenido interno de la tarjeta (común para link y modal)
+                        const cardInnerContent = `
+                            <div class="flex items-center justify-between mb-3">
+                                <i class="ph ${tutorial.icon} text-4xl text-columela-blue transition-transform duration-300 group-hover:scale-110"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-columela-dark mb-2 group-hover:text-columela-blue transition-colors duration-300">
+                                ${tutorial.title}
+                            </h3>
+                            <p class="text-sm text-columela-text">
+                                ${tutorial.description}
+                            </p>
                         `;
 
-                        // --- Construcción del Contenido (Desplegable) ---
-                        const content = document.createElement('div');
-                        content.className = 'accordion-content';
-
-                        let contentHTML = '<div class="accordion-content-inner">';
-
-                        // Añadir vídeo si existe
-                        if (tutorial.videoUrl) {
-                            contentHTML += `
-                                <div class="tutorial-video-container mb-4">
-                                    <iframe src="${tutorial.videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                                </div>
+                        // --- AQUÍ ESTÁ LA LÓGICA HÍBRIDA ---
+                        if (tutorial.type === 'link') {
+                            // 1. Si es un 'link', creamos una tarjeta <a>
+                            const target = tutorial.url.startsWith('http') || tutorial.url.endsWith('.pdf') ? '_blank' : '_self';
+                            cardHTML = `
+                                <a href="${tutorial.url}" target="${target}" rel="noopener noreferrer" class="${cardClasses}">
+                                    ${cardInnerContent}
+                                </a>
                             `;
-                        }
-
-                        // Añadir pasos (texto) si existen
-                        if (tutorial.steps && tutorial.steps.length > 0) {
-                            // Usamos las clases de tu CSS para que la lista se vea bien
-                            contentHTML += '<ul>'; 
-                            tutorial.steps.forEach(step => {
-                                contentHTML += `<li>${step}</li>`;
-                            });
-                            contentHTML += '</ul>';
-                        }
-                        
-                        // *** INICIO DE LA MODIFICACIÓN (AÑADIR PDF) ***
-                        // Añadir botón de PDF si existe
-                        if (tutorial.pdfUrl) {
-                            // Añadimos un separador si ya había contenido (vídeo o steps)
-                            if (tutorial.videoUrl || (tutorial.steps && tutorial.steps.length > 0)) {
-                                contentHTML += '<div class="mt-5 pt-4 border-t border-gray-200">';
-                            } else {
-                                contentHTML += '<div>'; // Solo un div si no hay más contenido
+                        } else if (tutorial.type === 'modal') {
+                            // 2. Si es un 'modal', creamos una tarjeta <button>
+                            cardHTML = `
+                                <button type="button" data-modal-target="${tutorial.id}" class="${cardClasses} text-left w-full">
+                                    ${cardInnerContent}
+                                </button>
+                            `;
+                            
+                            // 3. Y ADEMÁS, creamos el HTML del modal (oculto)
+                            
+                            // Construir contenido del modal
+                            let modalStepsHTML = '';
+                            if (tutorial.content.steps && tutorial.content.steps.length > 0) {
+                                modalStepsHTML = '<ul class="list-disc pl-5 space-y-2 text-columela-text">';
+                                tutorial.content.steps.forEach(step => {
+                                    modalStepsHTML += `<li>${step}</li>`;
+                                });
+                                modalStepsHTML += '</ul>';
                             }
                             
-                            contentHTML += `
-                                    <a href="${tutorial.pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-link-button">
-                                        <i class="ph ph-file-pdf"></i>
-                                        Ver documento PDF completo
-                                    </a>
+                            let modalVideoHTML = '';
+                            if (tutorial.content.videoUrl) {
+                                modalVideoHTML = `
+                                    <div class="tutorial-video-container mb-4">
+                                        <iframe src="${tutorial.content.videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                    </div>
+                                `;
+                            }
+                            
+                            let modalPdfHTML = '';
+                            if (tutorial.content.pdfUrl) {
+                                modalPdfHTML = `
+                                    <div class="mt-5 pt-4 border-t border-gray-200">
+                                        <a href="${tutorial.content.pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-link-button">
+                                            <i class="ph ph-file-pdf"></i>
+                                            Ver documento PDF completo
+                                        </a>
+                                    </div>
+                                `;
+                            }
+
+                            // Plantilla del modal
+                            const modalHTML = `
+                                <div id="${tutorial.id}" class="modal-overlay">
+                                    <div class="modal-content">
+                                        <!-- Cabecera del Modal -->
+                                        <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+                                            <h3 class="text-xl font-semibold text-columela-dark">${tutorial.title}</h3>
+                                            <button type="button" data-modal-close="${tutorial.id}" class="text-gray-400 hover:text-gray-600">
+                                                <i class="ph ph-x text-2xl"></i>
+                                            </button>
+                                        </div>
+                                        <!-- Contenido del Modal -->
+                                        <div class="modal-body">
+                                            ${modalVideoHTML}
+                                            ${modalStepsHTML}
+                                            ${modalPdfHTML}
+                                        </div>
+                                    </div>
                                 </div>
                             `;
+                            modalContainer.innerHTML += modalHTML;
                         }
-                        // *** FIN DE LA MODIFICACIÓN ***
                         
-                        // Si no hay ni vídeo ni pasos NI PDF, mostrar un mensaje
-                        if (!tutorial.videoUrl && (!tutorial.steps || tutorial.steps.length === 0) && !tutorial.pdfUrl) {
-                             contentHTML += '<p>No hay contenido para este tutorial todavía.</p>';
-                        }
-
-                        contentHTML += '</div>'; // Cierre de .accordion-content-inner
-                        content.innerHTML = contentHTML;
-
-                        // Añadir botón y contenido al item
-                        item.appendChild(button);
-                        item.appendChild(content);
-                        
-                        // Añadir item al contenedor principal
-                        accordionContainer.appendChild(item);
+                        gridContainer.innerHTML += cardHTML;
                     });
 
-                    // --- 2. Añadir los Event Listeners (después de crear el HTML) ---
-                    addAccordionListeners();
+                    // 4. Añadir los listeners para los modales
+                    addModalListeners();
 
                 } catch (error) {
-                    console.error('Error al cargar los tutoriales del acordeón:', error);
-                    loadingMessage.innerHTML = '<p class="text-red-600">No se pudieron cargar los tutoriales.</p>';
+                    console.error('Error al cargar los tutoriales de Séneca:', error);
+                    gridContainer.innerHTML = '<p class="text-red-600 col-span-full">No se pudieron cargar las guías. Revisa el archivo <code>seneca-tutorials.json</code>.</p>';
                 }
             }
 
-            // --- 3. Función para manejar los Clics del Acordeón ---
-            function addAccordionListeners() {
-                const buttons = document.querySelectorAll('.accordion-button');
-                buttons.forEach(button => {
+            // Función para hacer que los botones abran/cierren los modales
+            function addModalListeners() {
+                // Botones que ABREN modales
+                document.querySelectorAll('[data-modal-target]').forEach(button => {
                     button.addEventListener('click', () => {
-                        const content = button.nextElementSibling;
-                        const icon = button.querySelector('.accordion-icon');
-                        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                        const modalId = button.getAttribute('data-modal-target');
+                        const modal = document.getElementById(modalId);
+                        if(modal) modal.classList.add('open');
+                    });
+                });
 
-                        // Cerrar todos los demás items (opcional, pero recomendado)
-                        buttons.forEach(btn => {
-                            if (btn !== button && btn.getAttribute('aria-expanded') === 'true') {
-                                btn.setAttribute('aria-expanded', 'false');
-                                btn.classList.remove('open');
-                                btn.nextElementSibling.classList.remove('open');
-                                btn.querySelector('.accordion-icon').classList.replace('ph-minus', 'ph-plus');
-                            }
-                        });
-                        
-                        // Abrir/Cerrar el item actual
-                        if (isExpanded) {
-                            button.setAttribute('aria-expanded', 'false');
-                            button.classList.remove('open');
-                            content.classList.remove('open');
-                            icon.classList.replace('ph-minus', 'ph-plus');
-                        } else {
-                            button.setAttribute('aria-expanded', 'true');
-                            button.classList.add('open');
-                            content.classList.add('open');
-                            icon.classList.replace('ph-plus', 'ph-minus');
+                // Botones que CIERRAN modales (la 'X')
+                document.querySelectorAll('[data-modal-close]').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const modalId = button.getAttribute('data-modal-close');
+                        const modal = document.getElementById(modalId);
+                        if(modal) modal.classList.remove('open');
+                    });
+                });
+
+                // Clicar en el fondo (overlay) para CERRAR
+                document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                    overlay.addEventListener('click', (e) => {
+                        // Si se clica solo en el fondo (y no en el contenido)
+                        if (e.target === overlay) {
+                            overlay.classList.remove('open');
                         }
                     });
                 });
             }
 
-            // --- 4. Ejecutar la carga ---
-            loadAccordionTutorials();
+            loadSenecaTutorials();
         });
     </script>
 
