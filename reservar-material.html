@@ -13,6 +13,9 @@
     <!-- 3. Estilos -->
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Carga de Phosphor Icons (para el icono +/- del acordeón) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     
     <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
     <script src="dynamic-loader.js"></script>
@@ -27,8 +30,26 @@
 
     <!-- 2. Contenido Principal -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+         <!-- Inicio del Breadcrumb (Migas de Pan). -->
+        <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ol class="flex items-center space-x-2 text-sm text-columela-text">
+                <li>
+                    <a href="index.html" class="flex items-center text-columela-blue hover:underline"><i class="ph ph-house mr-1.5"></i>Inicio</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <a href="gestion-recursos.html" class="text-columela-blue hover:underline">Gestión de recursos</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <span class="font-medium text-gray-500" aria-current="page">Reservar material TIC</span>
+                </li>
+            </ol>
+        </nav>
+        <!-- Fin del Breadcrumb. -->
         
-        <h1 class="text-4xl font-extrabold text-columela-dark mb-2 border-b-4 border-columela-yellow pb-2">
+        <h1 class="text-4xl font-extrabold text-columela-dark mb-2 border-b-4 border-columela-yellow pb-2 pt-8">
             Reserva y Uso de Material TIC
         </h1>
         <p class="text-xl text-gray-600 mb-8">

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "moodle-migracion",
+    "title": "Migración de Cursos (Fin de Curso)",
+    "description": "Tutorial completo (Copia, Creación, Restauración) para mover tus aulas al nuevo curso.",
+    "url": "plataformas-moodle-migracion.html",
+    "icon": "ph-rocket-launch"
+  },
+  {
+    "id": "moodle-pdf-calificaciones",
+    "title": "Guía PDF: Calificaciones",
+    "description": "Documento PDF oficial sobre cómo configurar y usar el libro de calificaciones.",
+    "url": "documentos/moodle-calificaciones.pdf",
+    "icon": "ph-file-pdf"
+  }
+]

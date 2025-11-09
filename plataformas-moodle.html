@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En Construcción - Rincón TIC</title>
+    <title>Guía de Moodle Centros - Rincón TIC</title>
     
     <!-- 1. Carga de Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
-    <!-- Carga de Phosphor Icons (para el icono de la página) -->
+    <!-- Carga de Phosphor Icons (para los iconos de las tarjetas) -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     
     <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
@@ -28,32 +28,44 @@
 
     <!-- 2. Contenido Principal de la Página -->
     <main class="app-content flex-grow">
+        <!-- Inicio del Breadcrumb (Migas de Pan). -->
+        <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <ol class="flex items-center space-x-2 text-sm text-columela-text">
+                <li>
+                    <a href="index.html" class="flex items-center text-columela-blue hover:underline"><i class="ph ph-house mr-1.5"></i>Inicio</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <a href="plataformas.html" class="text-columela-blue hover:underline">Guías de Plataformas</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <span class="font-medium text-gray-500" aria-current="page">Guía de Moodle</span>
+                </li>
+            </ol>
+        </nav>
+        <!-- 
+          Fin del Breadcrumb.
+        -->
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             
-            <!-- Contenedor del mensaje "En Construcción" -->
-            <section class="text-center bg-white p-8 sm:p-12 rounded-lg shadow-lg border border-gray-200" style="margin-top: 5vh; margin-bottom: 5vh;">
-                
-                <!-- Icono -->
-                <i class="ph-fill ph-traffic-cone text-8xl text-columela-yellow mb-6"></i>
-
-                <!-- Título -->
-                <h1 class="text-4xl font-extrabold text-columela-dark mb-4">
-                    Página en construcción
-                </h1>
-                
-                <!-- Subtítulo -->
-                <p class="text-lg text-columela-text max-w-2xl mx-auto mb-8">
-                    Estamos trabajando en esta sección para añadir nuevos tutoriales y recursos.
-                    ¡Vuelve a visitarla pronto!
+            <!-- Título y descripción de la página -->
+            <header class="page-header mb-8">
+                <h2 class="main-title">Guía de Moodle Centros</h2>
+                <p class="main-subtitle">
+                    Tutoriales, guías PDF y enlaces a procesos clave para la gestión de tus aulas virtuales.
                 </p>
+            </header>
 
-                <!-- Botón para volver al inicio -->
-                <a href="index.html" 
-                   class="inline-flex items-center gap-2 px-6 py-3 bg-columela-blue text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200 text-base">
-                    <i class="ph ph-arrow-left"></i>
-                    Volver a la página de inicio
-                </a>
-                
+            <!-- 
+              Contenedor de la cuadrícula de tarjetas.
+              El contenido se generará leyendo 'moodle-tutorials.json'
+            -->
+            <section id="platform-grid-container" class="mt-10">
+                <div id="platform-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Las tarjetas de plataformas se insertarán aquí por JavaScript -->
+                    <p id="loading-message" class="text-columela-text col-span-full">Cargando guías de Moodle...</p>
+                </div>
             </section>
 
         </div>
@@ -61,6 +73,55 @@
 
     <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
     <div id="footer-container"></div>
+
+
+    <!-- 
+      Script para cargar los tutoriales desde el JSON 
+      (Idéntico al de 'plataformas.html' pero apunta a 'moodle-tutorials.json')
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            async function loadMoodleTutorials() {
+                const gridContainer = document.getElementById('platform-grid');
+                const loadingMessage = document.getElementById('loading-message');
+
+                try {
+                    const response = await fetch(`moodle-tutorials.json?v=${new Date().getTime()}`); 
+                    if (!response.ok) {
+                        throw new Error(`Error al cargar el archivo JSON: ${response.statusText}`);
+                    }
+                    const tutorials = await response.json();
+
+                    gridContainer.innerHTML = ''; 
+
+                    tutorials.forEach(tutorial => {
+                        // Comprobamos si el enlace es externo o un PDF (para abrir en pestaña nueva)
+                        const target = tutorial.url.startsWith('http') || tutorial.url.endsWith('.pdf') ? '_blank' : '_self';
+                        
+                        const cardHTML = `
+                        <a href="${tutorial.url}" target="${target}" rel="noopener noreferrer" class="card-link-item group block bg-white p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 hover:border-columela-yellow focus:outline-none focus:ring-2 focus:ring-columela-blue">
+                            <div class="flex items-center justify-between mb-3">
+                                <i class="ph ${tutorial.icon} text-4xl text-columela-blue transition-transform duration-300 group-hover:scale-110"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-columela-dark mb-2 group-hover:text-columela-blue transition-colors duration-300">
+                                ${tutorial.title}
+                            </h3>
+                            <p class="text-sm text-columela-text">
+                                ${tutorial.description}
+                            </p>
+                        </a>
+                        `;
+                        gridContainer.innerHTML += cardHTML;
+                    });
+
+                } catch (error) {
+                    console.error('Error al cargar los tutoriales de Moodle:', error);
+                    gridContainer.innerHTML = '<p class="text-red-600 col-span-full">No se pudieron cargar las guías. Revisa el archivo <code>moodle-tutorials.json</code>.</p>';
+                }
+            }
+            loadMoodleTutorials();
+        });
+    </script>
 
 </body>
 </html>

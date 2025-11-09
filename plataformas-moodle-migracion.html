@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Migración Moodle - Rincón TIC</title>
+    
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos (styles.css ahora contiene tu CSS del acordeón) -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Carga de Phosphor Icons (para la cabecera/footer) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+</head>
+<body class="bg-gray-50 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
+
+    <!-- 2. Contenido Principal de la Página -->
+    <main class="app-content flex-grow">        
+        <!-- Inicio del Breadcrumb (Migas de Pan). -->
+        <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <ol class="flex items-center space-x-2 text-sm text-columela-text">
+                <li>
+                    <a href="index.html" class="flex items-center text-columela-blue hover:underline"><i class="ph ph-house mr-1.5"></i>Inicio</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <a href="plataformas.html" class="text-columela-blue hover:underline">Guías de Plataformas</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <a href="plataformas-moodle.html" class="text-columela-blue hover:underline">Guía de Moodle</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <span class="font-medium text-gray-500" aria-current="page">Tutorial Migración</span>
+                </li>
+            </ol>
+        </nav>
+        <!-- 
+          Fin del Breadcrumb.
+        -->
+        <div class="container-content max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-4 text-center">
+                Tutorial de migración de aulas en Moodle Centros
+            </h1>
+            <p class="text-lg text-gray-600 text-center mb-10">
+                Guía paso a paso para la migración de tus cursos al nuevo año académico.
+            </p>
+        
+            <div class="space-y-6">
+                
+                <details class="section-details bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <summary class="p-6 text-xl font-semibold flex justify-between items-center text-columela-blue">
+                        Paso 1: Crear una copia de seguridad del curso 24/25
+                    </summary>
+                    <div class="p-6 bg-gray-50 border-t border-gray-200">
+                        <p class="mb-4 text-gray-700">Para empezar, debes crear una copia de seguridad del curso del año pasado.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                            <li>Accede a Moodle Centros 24/25 <a href="https://educacionadistancia.juntadeandalucia.es/centros/cadiz24/login/index.php" target="_blank" class="text-columela-blue hover:underline">https://educacionadistancia.juntadeandalucia.es/centros/cadiz24/login/index.php</a> e inicia sesión con tu usuario y contraseña (los mismos que usas para Séneca).</li>
+                            <li>Navega al curso del que quieres hacer la copia.</li>
+                            <li>Haz clic en <strong class="text-gray-800">Más > Reutilización de curso > Copia de seguridad</strong>.</li>
+                            <li>Selecciona los elementos que quieras copiar y espera a que el proceso termine.</li>
+                            <li>Una vez generada, haz clic en <strong class="text-gray-800">Descargar</strong>.</li>
+                            
+                        </ol>
+                        <p class="mt-4 text-sm text-gray-600 italic"><strong class="text-gray-800">Consejo:</strong> Guarda la copia de seguridad descargada en tu cuenta de Google Drive de @g.educaand.es.</p>
+                        <div class="mt-6 border-t pt-4 border-gray-400">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Recursos adicionales</h3>
+                            <div class="flex flex-wrap gap-x-6 gap-y-2">
+                                <!-- Enlace de PDF (tu versión original) -->
+                                <a href="documentos/moodle-migracion.pdf" target="_blank" rel="noopener noreferrer" class="text-columela-blue hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6l-4-4H6zM6 4h4v4h4v10H6V4zm2 5a1 1 0 100 2h4a1 1 0 100-2H8zm0 3a1 1 0 100 2h4a1 1 0 100-2H8z" clip-rule="evenodd"/>
+                                    </svg>
+                                    PDF con instrucciones
+                                </a>
+                                <!-- Enlace de vídeo (tu versión original) -->
+                                <a href="https://www.youtube.com/watch?v=-BLPB_AAzG4" target="_blank" rel="noopener noreferrer" class="text-columela-blue hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2-1a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1H4z"/>
+                                        <path d="M8 11.168V8.832a.5.5 0 01.77-.42l2.667 1.168a.5.5 0 010 .84l-2.667 1.168A.5.5 0 018 11.168z"/>
+                                    </svg>
+                                    Vídeo-tutorial
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+        
+                
+                <details class="section-details bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <summary class="p-6 text-xl font-semibold flex justify-between items-center text-columela-blue">
+                        Paso 2: Crear las nuevas aulas para el curso 25/26
+                    </summary>
+                    <div class="p-6 bg-gray-50 border-t border-gray-200">
+                        <p class="mb-4 text-gray-700">Una vez que tengas tu horario registrado en Séneca, podrás crear tus aulas en Moodle Centros (suele tardar unas 24 horas).</p>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                            <li>Accede a la nueva Moodle del curso 25/26 <a href="https://educacionadistancia.juntadeandalucia.es/centros/cadiz/login/index.php" target="_blank" class="text-columela-blue hover:underline">https://educacionadistancia.juntadeandalucia.es/centros/cadiz/login/index.php</a></li>
+                            <li>Una vez dentro, crea las aulas que necesites. Ten paciencia, este proceso puede tardar unos minutos.</li>
+                        </ol>
+                         <div class="mt-6 border-t pt-4 border-gray-400">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Recursos adicionales</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://www.youtube.com/watch?v=xod_pJbOq4o" target="_blank" rel="noopener noreferrer" class="text-columela-blue hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2-1a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1H4z"/>
+                                        <path d="M8 11.168V8.832a.5.5 0 01.77-.42l2.667 1.168a.5.5 0 010 .84l-2.667 1.168A.5.5 0 018 11.168z"/>
+                                    </svg>
+                                    Vídeo-tutorial
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+        
+                
+                <details class="section-details bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <summary class="p-6 text-xl font-semibold flex justify-between items-center text-columela-blue">
+                        Paso 3: Cargar la copia de seguridad en las aulas nuevas
+                    </summary>
+                    <div class="p-6 bg-gray-50 border-t border-gray-200">
+                        <p class="mb-4 text-gray-700">Una vez que las nuevas aulas aparezcan en "Mis cursos", podrás restaurar la copia de seguridad que guardaste en tu Drive.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                            <li>Ten a mano la copia de seguridad que descargaste en el paso 1. Si la subiste a tu Drive, descárgala.</li>
+                            <li>Entra en tu nueva aula de Moodle.</li>
+                            <li>Haz clic en <strong class="text-gray-800">Más > Reutilización de curso > Restaurar</strong>.</li>
+                            <li>Selecciona la copia de seguridad que descargaste y sigue los pasos para completar la restauración.</li>
+                        </ol>
+                        <div class="mt-6 border-t pt-4 border-gray-400">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Recursos adicionales</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://www.youtube.com/watch?v=isD0q3VzdvA" target="_blank" rel="noopener noreferrer" class="text-columela-blue hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2-1a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1H4z"/>
+                                        <path d="M8 11.168V8.832a.5.5 0 01.77-.42l2.667 1.168a.5.5 0 010 .84l-2.667 1.168A.5.5 0 018 11.168z"/>
+                                    </svg>
+                                    Vídeo-tutorial
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <!-- AQUÍ TERMINA TU CONTENIDO ACTUALIZADO -->
+
+    </main>
+
+    <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
+    <div id="footer-container"></div>
+
+</body>
+</html>
