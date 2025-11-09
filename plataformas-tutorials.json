@@ -19,5 +19,13 @@
     "description": "Registro de incidencias, reserva de recursos TIC/aulas y calendario de actividades.",
     "url": "plataformas-intranet.html",
     "icon": "ph-desktop"
+  },
+  {
+    "id": "gsuite",
+    "title": "G Suite",
+    "description": "Saca partido a las herramientas de Google: Drive, Gmail, Documentos, Classroom y Sites.",
+    "url": "plataformas-gsuite.html",
+    "icon": "ph-squares-four"
   }
+
 ]
