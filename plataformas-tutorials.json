@@ -1,7 +1,7 @@
 [
   {
-    "id": "seneca-ipasen",
-    "title": "Séneca / iPasen",
+    "id": "seneca",
+    "title": "Séneca",
     "description": "Gestión de faltas de asistencia, cuaderno del profesor, comunicación con familias y más.",
     "url": "plataformas-seneca.html",
     "icon": "ph-graduation-cap"
@@ -26,6 +26,13 @@
     "description": "Saca partido a las herramientas de Google: Drive, Gmail, Documentos, Classroom y Sites.",
     "url": "plataformas-gsuite.html",
     "icon": "ph-squares-four"
+  },
+  {
+    "id": "ipasen",
+    "title": "iPasen",
+    "description": "Aprende a consultar notas, justificar faltas, revisar el horario y comunicarte con el profesorado desde tu móvil.",
+    "url": "plataformas-ipasen.html",
+    "icon": "ph-device-mobile"
   }
 
 ]
