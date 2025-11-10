@@ -41,8 +41,22 @@
     }
   },
   {
+    "id": "seneca-funciones-tutora-fpdual",
+    "title": "Funciones de Tutoría FP Dual",
+    "description": "Cómo rellenar Plan de formación inicial, Fase de formación en empresas u organismos equiparados, Plan de formación individual y Planes de formación inicial para el curso 2025/2026",
+    "icon": "ph-notebook",
+    "type": "modal",
+    "content": {
+      "videoUrl": null,
+      "steps": [
+        "Entra en el siguiente enlace para visualizar la Guía en PDF."
+      ],
+      "pdfUrl": "documentos/seneca-funciones-tutora-fpdual1.pdf"
+    }
+  },
+  {
     "id": "seneca-cuaderno-link",
-    "title": "Cuaderno del Profesor (Link)",
+    "title": "En construcción",
     "description": "Tutorial completo en una página dedicada sobre cómo configurar el cuaderno de clase.",
     "icon": "ph-notebook",
     "type": "link",

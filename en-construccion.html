@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En construcción - Rincón TIC</title>
+    
+    <!-- 1. Carga de Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Configuración de Colores (CRÍTICO) -->
+    <script src="tailwind.config.js"></script>
+    
+    <!-- 3. Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Carga de Phosphor Icons (para los iconos de las tarjetas) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    
+    <!-- 4. Script de Carga Dinámica (CRÍTICO para la estructura visual) -->
+    <script src="dynamic-loader.js"></script>
+</head>
+<body class="bg-gray-50 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Contenedor para la Cabecera (Se inyectará header.html) -->
+    <div id="header-container"></div>
+
+    <!-- 2. Contenido Principal de la Página -->
+    <main class="app-content flex-grow">
+        
+        <!-- Inicio del Breadcrumb (Migas de Pan). -->
+        <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <ol class="flex items-center space-x-2 text-sm text-columela-text">
+                <li>
+                    <a href="index.html" class="flex items-center text-columela-blue hover:underline"><i class="ph ph-house mr-1.5"></i>Inicio</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <a href="plataformas.html" class="text-columela-blue hover:underline">Guías de Plataformas</a>
+                </li>
+                <li><i class="ph ph-caret-right text-gray-400"></i></li>
+                <li>
+                    <span class="font-medium text-gray-500" aria-current="page">En construcción</span>
+                </li>
+            </ol>
+        </nav>
+        <!-- Fin del Breadcrumb. -->
+
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            
+            <!-- Contenedor del mensaje "En Construcción" -->
+            <section class="text-center bg-white p-8 sm:p-12 rounded-lg shadow-lg border border-gray-200" style="margin-top: 5vh; margin-bottom: 5vh;">
+                
+                <!-- Icono -->
+                <i class="ph-fill ph-traffic-cone text-8xl text-columela-yellow mb-6"></i>
+
+                <!-- Título -->
+                <h1 class="text-4xl font-extrabold text-columela-dark mb-4">
+                    Página en construcción
+                </h1>
+                
+                <!-- Subtítulo -->
+                <p class="text-lg text-columela-text max-w-2xl mx-auto mb-8">
+                    Estamos trabajando en esta sección para añadir nuevos tutoriales y recursos.
+                    ¡Vuelve a visitarla pronto!
+                </p>
+
+                <!-- Botón para volver a la anterior -->
+                <a href="plataformas.html" 
+                   class="inline-flex items-center gap-2 px-6 py-3 bg-columela-blue text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200 text-base">
+                    <i class="ph ph-arrow-left"></i>
+                    Volver a la página de plataformas
+                </a>
+                
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Contenedor para el Pie de Página (Se inyectará footer.html) -->
+    <div id="footer-container"></div>
+
+</body>
+</html>
