@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAD 2025-2026 - IES Columela</title>
+    <!-- 1. Carga de Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Usamos Inter como fuente principal */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6; /* Un gris muy claro para el fondo */
+        }
+        /* Estilos para la pestaña activa */
+        .tab-btn.active {
+            border-bottom-color: #005a92; /* Azul corporativo Junta de Andalucía */
+            color: #005a92;
+            font-weight: 600;
+        }
+        /* Estilos para el cabecero del acordeón */
+        .accordion-header {
+            transition: background-color 0.2s ease-in-out;
+        }
+        .accordion-header:hover {
+            background-color: #f0f4f8;
+        }
+        .accordion-header.open {
+            background-color: #e6eef5;
+            color: #005a92;
+        }
+        /* Icono del acordeón */
+        .accordion-icon::before {
+            content: '+';
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .accordion-header.open .accordion-icon::before {
+            content: '−';
+        }
+        /* Estilo para el contenido del acordeón */
+        .accordion-body ul li {
+            margin-bottom: 0.75rem; /* Espacio entre LIs */
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Contenedor Principal --><div class="container mx-auto max-w-6xl p-4 sm:p-6 md:p-10">
+
+        <!-- Cabecera --><header class="mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-md flex items-center"> <!-- Añadido 'flex items-center' aquí --><img src="img/logo.png" alt="Logo IES Columela" class="h-20 mr-6"> <!-- Logo actualizado aquí --><div>
+                    <h1 class="text-3xl font-bold text-[#005a92]">Plan de Actuación Digital 2025-2026</h1>
+                    <h2 class="text-xl text-gray-600">IES Columela (Cádiz) - Coordinación TDE / STEAM 4.0</h2>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navegación de Pestañas --><nav class="flex border-b-2 border-gray-200 mb-6">
+            <button id="btn-pad" class="tab-btn active text-lg py-3 px-6 border-b-4" onclick="showTab('pad')">
+                1. PAD
+            </button>
+            <button id="btn-lineas" class="tab-btn text-lg py-3 px-6 border-b-4 text-gray-500" onclick="showTab('lineas')">
+                2. Líneas de actuación
+            </button>
+            <button id="btn-certificacion" class="tab-btn text-lg py-3 px-6 border-b-4 text-gray-500" onclick="showTab('certificacion')">
+                3. Certificación docente
+            </button>
+        </nav>
+
+        <!-- Contenido de las Pestañas --><main>
+
+            <!-- ======================= --><!-- Pestaña 1: ¿Qué es el PAD? --><!-- ======================= --><div id="tab-pad" class="tab-content bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-[#005a92] mb-4">1. Nuestro Plan de Actuación Digital (PAD)</h3>
+                <div class="space-y-4 text-lg text-gray-700">
+                    <p>Documento para planificar la transformación digital en los centros educativos andaluces. Su objetivo es desarrollar competencias digitales en la comunidad educativa para mejorar la calidad de la enseñanza a través de la integración de tecnologías digitales en los procesos de enseñanza-aprendizaje y gestión.</p>
+                    <ul class="list-disc list-inside space-y-2 pl-4">
+                        <li>TDE: Mejorar la competencia digital.</li>
+                        <li>STEAM 4.0: mejorar la competencia digital a través del pensamiento computacional, la programación, la robótica y el buen uso de la IA.</li>
+                    </ul>                  
+                </div>
+            </div>
+
+            <!-- =============================== --><!-- Pestaña 2: Líneas de Actuación --><!-- =============================== --><div id="tab-lineas" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-[#005a92] mb-6">2. Líneas de actuación del PAD 2025-2026</h3>
+                
+                <!-- ÁMBITO 1: ORGANIZACIÓN --><div class="mb-6">
+                    <h4 class="text-xl font-bold text-gray-700 border-l-4 border-[#005a92] pl-3 mb-4">Ámbito 1: Organización del centro</h4>
+                    <div class="space-y-3">
+                        <!-- Acordeón 1.1 --><div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-lg" onclick="toggleAccordion('acc-1-1')">
+                                <span>Línea 1.1: Formación instrumental PDI y EcoDigEdu <span class="font-normal text-sm text-red-600">(Vinculada a STEAM)</span></span>
+                                <span class="accordion-icon mr-2"></span>
+                            </button>
+                            <div id="acc-1-1" class="accordion-body hidden p-6 border-t bg-gray-50">
+                                <ul class="list-none space-y-3">
+                                    <li><strong class="text-gray-800 block">¿Qué?</strong>Diseñar e implementar un plan de formación instrumental para el profesorado en el uso básico y funcional de las Pantallas Digitales Interactivas (PDI/ADI) y otros recursos tecnológicos EcoDigEdu. El objetivo es asegurar que la dotación se maneje correctamente y se integre de forma eficiente como apoyo metodológico en las áreas STEAM 4.0 (pensamiento computacional, robótica) y en la práctica docente general.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Formación):</strong>Crear un Espacio en Moodle Centros que contenga manuales de uso y tutoriales en vídeo sobre las funcionalidades operativas clave de las PDI/ADI (encendido, conexión, software de anotación, gestión de archivos). Ofrecer microformaciones y/o sesiones de resolución de dudas en periodos no lectivos (ej. recreos) para consolidar las destrezas básicas.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Implementación):</strong>Elaborar y distribuir una guía rápida de primeros pasos con las PDI/ADI para colocar junto a cada dispositivo. Además, se establecerá un registro y seguimiento trimestral de la dotación tecnológica EcoDigEdu (PDI/ADI) y de los kits de Código Escuela 4.0 (robots) para garantizar su correcto funcionamiento, inventario y la ubicación adecuada en los espacios comunes y aulas.</li>
+                                    <li><strong class="text-gray-800 block">Evaluación:</strong>Evaluar la satisfacción del profesorado con los materiales formativos ofrecidos y la autopercepción de competencia instrumental en el uso de las PDI/ADI. Se medirá si el profesorado se siente capacitado para utilizar la PDI como una herramienta metodológica efectiva.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Acordeón 1.2 --><div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-lg" onclick="toggleAccordion('acc-1-2')">
+                                <span>Línea 1.2: Competencia docente en IA y robótica <span class="font-normal text-sm text-red-600">(Vinculada a STEAM)</span></span>
+                                <span class="accordion-icon mr-2"></span>
+                            </button>
+                            <div id="acc-1-2" class="accordion-body hidden p-6 border-t bg-gray-50">
+                                <ul class="list-none space-y-3">
+                                    <li><strong class="text-gray-800 block">¿Qué?</strong>Desarrollo de la competencia docente específica en pensamiento computacional, la programación, la robótica y el buen uso de la inteligencia artificial.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Formación):</strong>Gestionar con el CEP de referencia la realización de un seminario en Centro para la formación en IA responsable. Se abordarán temas como la ética en el uso de modelos generativos, herramientas para la detección de plagio, y la integración didáctica de la IA como asistente de aprendizaje para el alumnado.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Implementación):</strong>Recopilar y difundir las guías de buenas prácticas y criterios éticos sobre el uso de la Inteligencia Artificial en el aula, surgidas del seminario del CEP.</li>
+                                    <li><strong class="text-gray-800 block">Evaluación:</strong>Evaluar la satisfacción y el nivel de comprensión del profesorado respecto a los principios éticos y las guías de uso de la IA.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Acordeón 1.3 --><div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-lg" onclick="toggleAccordion('acc-1-3')">
+                                <span>Línea 1.3: Guía de uso responsable de la dotación</span>
+                                <span class="accordion-icon mr-2"></span>
+                            </button>
+                            <div id="acc-1-3" class="accordion-body hidden p-6 border-t bg-gray-50">
+                                <ul class="list-none space-y-3">
+                                    <li><strong class="text-gray-800 block">¿Qué?</strong>Elaboración y difusión de una guía de uso responsable y conservación de la dotación tecnológica del centro.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Formación):</strong>Se elaborará un documento corto, visual y accesible (la "Guía de uso responsable...") y se presentará en microsesiones de 15 minutos diferenciadas por etapas y enseñanzas (ESO, Bachillerato, Ciclos Formativos, Adultos) para adaptar los contenidos de uso responsable a las necesidades de cada sector.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Implementación):</strong>Se utilizará la mensajería de Séneca como canal oficial para la difusión de la Guía, asegurando su recepción obligatoria por parte del profesorado. Además, se creará un repositorio digital en Moodle para alojar la Guía y los materiales de las micros-sesiones, facilitando su consulta permanente.</li>
+                                    <li><strong class="text-gray-800 block">Evaluación:</strong>Evaluar la tasa de reducción de incidencias TIC básicas por mal uso (hardware y software) durante el 2º Trimestre, comparando la cifra con las incidencias registradas en el 1º Trimestre. Medir el grado de conocimiento y satisfacción del profesorado con la Guía de uso responsable.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Acordeón 1.4 --><div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-lg" onclick="toggleAccordion('acc-1-4')">
+                                <span>Línea 1.4: Protocolo de préstamo dotación STEAM 4.0 <span class="font-normal text-sm text-red-600">(Vinculada a STEAM)</span></span>
+                                <span class="accordion-icon mr-2"></span>
+                            </button>
+                            <div id="acc-1-4" class="accordion-body hidden p-6 border-t bg-gray-50">
+                                <ul class="list-none space-y-3">
+                                    <li><strong class="text-gray-800 block">¿Qué?</strong>Protocolo de préstamo y uso responsable de la dotación STEAM 4.0.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Formación):</strong>Elaborar y difundir una guía rápida de procedimiento de préstamo y reserva.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Implementación):</strong>Crear un sistema digital de reserva para gestionar uso de los kits de dotación STEAM 4.0. Organizar el inventario de dichos kits y establecer un punto físico único en el centro para su retirada y devolución con el registro de uso.</li>
+                                    <li><strong class="text-gray-800 block">Evaluación:</strong>Protocolo de préstamo y uso responsable de la dotación STEAM 4.0</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÁMBITO 2: INFORMACIÓN Y COMUNICACIÓN --><div class="mb-6">
+                    <h4 class="text-xl font-bold text-gray-700 border-l-4 border-[#005a92] pl-3 mb-4">Ámbito 2: Información y comunicación</h4>
+                    <div class="space-y-3">
+                        <!-- Acordeón 2.1 --><div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-lg" onclick="toggleAccordion('acc-2-1')">
+                                <span>Línea 2.1: Consolidación de Séneca como canal oficial</span>
+                                <span class="accordion-icon mr-2"></span>
+                            </button>
+                            <div id="acc-2-1" class="accordion-body hidden p-6 border-t bg-gray-50">
+                                <ul class="list-none space-y-3">
+                                    <li><strong class="text-gray-800 block">¿Qué?</strong>Consolidación de Séneca como canal único y oficial de comunicación interna del profesorado. Establecer la obligatoriedad del uso de la funcionalidad de Mensajería de Séneca como el único canal formal y oficial para todas las comunicaciones internas entre el profesorado, los órganos de coordinación y el equipo directivo. El objetivo es sustituir canales informales (como el correo electrónico personal o la mensajería instantánea) para garantizar la trazabilidad, la seguridad de la información y el cumplimiento de la normativa de protección de datos en las comunicaciones funcionales del centro.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Formación):</strong>Elaborar un tutorial conciso sobre las funcionalidades esenciales de la mensajería de Séneca: gestionar categorías de mensajes, usar la búsqueda avanzada y aplicar filtros para una comunicación más eficiente. Este tutorial se difundirá y se alojará en el Moodle del profesorado como material de consulta permanente.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Implementación):</strong>Crear un protocolo de uso interno que especifique la obligatoriedad de usar Séneca.</li>
+                                    <li><strong class="text-gray-800 block">Evaluación:</strong>Evaluar el grado de satisfacción del profesorado con la centralización de la mensajería interna en Séneca, la utilidad del tutorial y la percepción de mejora en la claridad y trazabilidad de las comunicaciones. Se buscará confirmar la reducción del uso de canales informales para asuntos funcionales (14.c.3).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÁMBITO 3: PROCESOS DE ENSEÑANZA --><div class="mb-6">
+                    <h4 class="text-xl font-bold text-gray-700 border-l-4 border-[#005a92] pl-3 mb-4">Ámbito 3: Procesos de enseñanza-aprendizaje</h4>
+                    <div class="space-y-3">
+                        <!-- Acordeón 3.1 --><div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-lg" onclick="toggleAccordion('acc-3-1')">
+                                <span>Línea 3.1: Intervención STEAM con alumnado <span class="font-normal text-sm text-red-600">(Vinculada a STEAM)</span></span>
+                                <span class="accordion-icon mr-2"></span>
+                            </button>
+                            <div id="acc-3-1" class="accordion-body hidden p-6 border-t bg-gray-50">
+                                <ul class="list-none space-y-3">
+                                    <li><strong class="text-gray-800 block">¿Qué?</strong>Desarrollo del pensamiento computacional y la robótica en el alumnado mediante talleres de intervención directa.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Formación):</strong>Elaborar y difundir un repositorio de tutoriales y ejercicios básicos (en Moodle Centros) sobre pensamiento computacional y programación por bloques, de libre acceso para el alumnado de la ESO. Este material servirá como recurso de autoaprendizaje para aquellos estudiantes que deseen profundizar en las competencias STEAM.</li>
+                                    <li><strong class="text-gray-800 block">¿Cómo? (Implementación):</strong>Realizar sesiones específicas y talleres puntuales (ej. "La Hora del Código" o uso de los kits de robótica) para los grupos (enfocándonos en 1º y 2º de ESO), con el objetivo de introducir conceptos de programación por bloques. Estas intervenciones se harán en colaboración con el profesorado de las materias afines que desee participar.</li>
+                                    <li><strong class="text-gray-800 block">Evaluación:</strong>Medir el número de grupos de que han participado en las sesiones específicas y talleres de pensamiento computacional/robótica.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- =============================== --><!-- Pestaña 3: Certificación --><!-- =============================== --><div id="tab-certificacion" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-[#005a92] mb-6">3. Certificación del profesorado (TDE y STEAM 4.0)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Columna 1: Requisitos --><div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                        <h4 class="text-xl font-semibold text-blue-800 mb-4">Requisitos de participación</h4>
+                        <p class="text-gray-700 mb-4">Para poder ser considerado profesorado candidato al reconocimiento como **profesorado participante** se deben cumplir los siguientes requisitos:</p>
+                        <ul class="list-decimal list-inside space-y-3 text-gray-700">
+                            <li>Tener un nivel CDD acreditado en el Sistema de Información Séneca.</li>
+                            <li>La realización de las tareas asignadas en el PAD.</li>
+                            <li>Adicionalmente, se establecerá como requisito la integración del Proyecto STEAM 4.0 en los procesos de enseñanza aprendizaje.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna 2: Beneficios --><div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                        <h4 class="text-xl font-semibold text-green-800 mb-4">Beneficios directos (según normativa)</h4>
+                        <p class="text-gray-700 mb-4">El profesorado participante en el proceso TDE y en la implementación del Proyecto STEAM 4.0 será acreditado con el siguiente reconocimiento:</p>
+                        <ul class="list-none space-y-3">
+                            <li class="flex items-center">
+                                <span class="text-green-700 text-2xl font-bold mr-3">✓</span>
+                                <div>
+                                    <span class="font-bold text-lg">0,25 Puntos</span>
+                                    <span class="block text-sm text-gray-600">Concurso General de Traslados (CGT)</span>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-700 text-2xl font-bold mr-3">✓</span>
+                                <div>
+                                    <span class="font-bold text-lg">20 Horas de Formación</span>
+                                    <span class="block text-sm text-gray-600">Reconocimiento para Sexenios</span>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-700 text-2xl font-bold mr-3">✓</span>
+                                <div>
+                                    <span class="font-bold text-lg">0,10 Puntos</span>
+                                    <span class="block text-sm text-gray-600">Procesos de selección para la dirección</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 2. Lógica JavaScript para Pestañas y Acordeones --><script>
+        // --- Lógica de Pestañas ---
+        const tabs = document.querySelectorAll('.tab-content');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+
+        function showTab(tabId) {
+            // Ocultar todas las pestañas
+            tabs.forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            // Quitar clase 'active' a todos los botones
+            tabBtns.forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-gray-500'); // Color de inactivo
+            });
+
+            // Mostrar la pestaña seleccionada
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            // Marcar el botón como activo
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('text-gray-500');
+        }
+
+        // --- Lógica de Acordeones ---
+        function toggleAccordion(accordionId) {
+            const accordionBody = document.getElementById(accordionId);
+            const accordionHeader = accordionBody.previousElementSibling; // El botón
+            
+            // Comprobar si está abierto
+            const isOpen = !accordionBody.classList.contains('hidden');
+
+            if (isOpen) {
+                accordionBody.classList.add('hidden');
+                accordionHeader.classList.remove('open');
+            } else {
+                accordionBody.classList.remove('hidden');
+                accordionHeader.classList.add('open');
+            }
+        }
+    </script>
+
+</body>
+</html>
