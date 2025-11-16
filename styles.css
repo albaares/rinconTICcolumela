@@ -476,3 +476,70 @@
     flex-direction: column;
     gap: 0.5rem; /* espacio entre li */
 }
+
+/* --- HOJA DE ESTILOS PARA IMPRESIÓN --- */
+
+
+/* ----------------------------------- */
+/* CLASES DE VISIBILIDAD PARA IMPRESIÓN/PDF (NUEVO) */
+/* ----------------------------------- */
+/* Esta clase OCULTA el elemento en la web, pero lo MUESTRA al imprimir (Guardar como PDF) */
+.print-only-source {
+    display: none; /* Oculto por defecto en el navegador */
+}
+
+/* Esta clase MUESTRA el elemento en la web, pero lo OCULTA al imprimir (ej: un vídeo) */
+.print-hidden {
+    display: block; /* Visible por defecto en el navegador */
+}
+
+
+/* Oculta elementos irrelevantes al 'Guardar como PDF' */
+@media print {
+
+    /* 1. Ocultar Cabecera, Pie y Migas de Pan */
+    #header-container,
+    #footer-container,
+    nav[aria-label="Breadcrumb"] {
+        display: none !important;
+    }
+
+    /* 2. Ocultar elementos que no se imprimen bien (NUEVO) */
+    .tutorial-video-container, /* Oculta vídeos de YouTube */
+    .pdf-container iframe,
+    .print-hidden { /* Oculta cualquier cosa que marques con esta clase */
+        display: none !important;
+    }
+    
+    /* 3. Ocultar botones de "volver" o acciones */
+    .back-button-link,
+    .quick-action-button {
+         display: none !important;
+    }
+
+    /* 4. Expandir el contenido principal */
+    main.app-content,
+    main {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* 5. Evitar saltos de página feos */
+    .tutorial-card {
+        page-break-inside: avoid;
+    }
+
+    /* 6. Mostrar el "Sello de Origen" al imprimir (NUEVO) */
+    .print-only-source {
+        display: block !important; /* Se muestra en el PDF */
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px dashed #999;
+        font-size: 0.9rem;
+        color: #333;
+    }
+}
