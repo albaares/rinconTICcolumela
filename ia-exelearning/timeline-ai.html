@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            padding: 2rem;
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: #1a73e8;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1rem;
+            position: relative;
+            margin: 2rem 0;
+            width: 50%;
+            cursor: pointer;
+        }
+
+        .timeline-item:nth-child(odd) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            margin-left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #1a73e8;
+            max-width: 80%;
+            transition: all 0.3s ease;
+            max-height: 100px;
+            overflow: hidden;
+        }
+
+        .timeline-item.active .timeline-content {
+            max-height: 500px;
+            background: #f8f9ff;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #1a73e8;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .timeline-description {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .timeline-expanded {
+            margin-top: 1rem;
+            display: none;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .timeline-item.active .timeline-expanded {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                justify-content: flex-start;
+                padding-left: 60px;
+            }
+
+            .timeline-item:nth-child(odd) {
+                margin-left: 0;
+            }
+
+            .timeline-content {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline-container">
+        <h1>Evolución de la IA Generativa de Texto</h1>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">1950s</div>
+                    <h3 class="timeline-title">Los Inicios: Test de Turing</h3>
+                    <p class="timeline-description">Alan Turing propone el Test de Turing, estableciendo las bases para evaluar la capacidad de las máquinas para generar texto de manera convincente.</p>
+                    <div class="timeline-expanded">
+                        El Test de Turing, propuesto por Alan Turing en su paper "Computing Machinery and Intelligence", plantea un método para evaluar si una máquina puede exhibir un comportamiento inteligente indistinguible del de un humano. Este test sentó las bases fundamentales para el desarrollo de la inteligencia artificial conversacional y la generación de texto.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">1966</div>
+                    <h3 class="timeline-title">ELIZA</h3>
+                    <p class="timeline-description">Joseph Weizenbaum crea ELIZA, uno de los primeros programas capaces de procesar lenguaje natural.</p>
+                    <div class="timeline-expanded">
+                        ELIZA fue el primer chatbot de la historia, capaz de mantener conversaciones simulando ser un psicoterapeuta. Utilizaba patrones de reconocimiento simples y reformulación de preguntas, demostrando que incluso con técnicas básicas se podía crear la ilusión de comprensión del lenguaje natural.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2018</div>
+                    <h3 class="timeline-title">BERT</h3>
+                    <p class="timeline-description">Google introduce BERT, revolucionando el procesamiento del lenguaje natural.</p>
+                    <div class="timeline-expanded">
+                        BERT (Bidirectional Encoder Representations from Transformers) representó un avance significativo en NLP. Su capacidad para entender el contexto bidireccional de las palabras mejoró dramáticamente tareas como la comprensión de texto, respuesta a preguntas y análisis de sentimiento.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2019</div>
+                    <h3 class="timeline-title">GPT-2</h3>
+                    <p class="timeline-description">OpenAI lanza GPT-2, demostrando capacidades mejoradas en generación de texto.</p>
+                    <div class="timeline-expanded">
+                        GPT-2 marcó un hito con sus 1.5 mil millones de parámetros. Su capacidad para generar texto coherente y contextualmente relevante era tan avanzada que OpenAI inicialmente decidió no liberar el modelo completo por preocupaciones éticas sobre su posible mal uso.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020</div>
+                    <h3 class="timeline-title">GPT-3</h3>
+                    <p class="timeline-description">OpenAI presenta GPT-3, con 175 mil millones de parámetros.</p>
+                    <div class="timeline-expanded">
+                        GPT-3 representó un salto cuántico en la escala de los modelos de lenguaje. Su capacidad para realizar tareas con "zero-shot learning" y generar código, poesía, y textos creativos demostró el potencial de los modelos de gran escala para comprender y generar lenguaje humano.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2022</div>
+                    <h3 class="timeline-title">ChatGPT</h3>
+                    <p class="timeline-description">OpenAI lanza ChatGPT, democratizando el acceso a la IA conversacional.</p>
+                    <div class="timeline-expanded">
+                        ChatGPT revolucionó la interacción humano-IA al ofrecer una interfaz conversacional accesible y versátil. Su capacidad para mantener contexto, generar respuestas coherentes y adaptarse a diferentes estilos de comunicación lo convirtió en un fenómeno global.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2023</div>
+                    <h3 class="timeline-title">GPT-4</h3>
+                    <p class="timeline-description">OpenAI lanza GPT-4, mejorando significativamente la precisión y el razonamiento.</p>
+                    <div class="timeline-expanded">
+                        GPT-4 estableció nuevos estándares en capacidad de razonamiento, precisión y comprensión de contexto. Su capacidad multimodal y mejora en el seguimiento de instrucciones lo convirtieron en una herramienta más versátil y confiable para una amplia gama de aplicaciones.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.timeline-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                // Desactiva todos los items
+                document.querySelectorAll('.timeline-item').forEach(function(otherItem) {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Alterna la clase 'active' en el item clicado
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
