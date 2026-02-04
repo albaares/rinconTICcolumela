@@ -19,20 +19,6 @@
     "description": "Recurso educativo centrado en la aplicación de la Inteligencia Artificial en los contextos educativos.",
     "url": "ia-exelearning/index.html",
     "icon": "ph-brain"
-  },
-  {
-    "id": "moodle-guia-gestor",
-    "title": "Manual básico para rol gestor",
-    "description": "Documento PDF realizado por la Junta de Andalucía que sirve de guía de uso básico para el profesorado con el rol gestor (tus propias aulas de la Moodle).",
-    "url": "documentos/moodle-profesorado-gestor.pdf",
-    "icon": "ph-cpu"
-  },
-  {
-    "id": "traspasar-calificaciones-moodle-seneca",
-    "title": "Traspasar calificaciones de Moodle a Séneca",
-    "description": "Cómo pasar calificaciones de tares de la Moodle a actividades del cuaderno de Séneca.",
-    "url": "documentos/traspasar-calificaciones-moodle-seneca.pdf",
-    "icon": "ph-file-pdf"
   }
 ]
 
