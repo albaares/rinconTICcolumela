@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ia",
+    "title": "Inteligencia Artificial",
+    "description": "Explora herramientas de IA generativa para crear contenidos y optimizar tareas docentes.",
+    "url": "steam-ia.html",
+    "icon": "ph-brain"
+  },
+  {
+    "id": "robotica",
+    "title": "Robótica",
+    "description": "Guías sobre montaje y programación de kits robóticos y sensores en el aula.",
+    "url": "steam-robotica.html",
+    "icon": "ph-robot"
+  },
+  {
+    "id": "pensamientocomputacional",
+    "title": "Pensamiento computacional",
+    "description": "Recursos para trabajar la resolución de problemas mediante algoritmos, Scratch y lógica.",
+    "url": "steam-pensamientocomputacional.html",
+    "icon": "ph-tree-structure"
+  }
+]
