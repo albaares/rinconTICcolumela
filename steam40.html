@@ -99,7 +99,7 @@
                     // Generar una tarjeta por cada plataforma en el JSON
                     platforms.forEach(platform => {
 
-                        const target = platforms.url.startsWith('http') || platforms.url.endsWith('.pdf') ? '_blank' : '_self';
+                        const target = platform.url.startsWith('http') || platform.url.endsWith('.pdf') ? '_blank' : '_self';
                         
                         // Reutilizamos el mismo estilo de tarjeta de las otras páginas
                         const cardHTML = `
